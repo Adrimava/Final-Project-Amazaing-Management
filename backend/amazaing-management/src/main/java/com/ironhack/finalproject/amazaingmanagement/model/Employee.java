@@ -1,5 +1,7 @@
 package com.ironhack.finalproject.amazaingmanagement.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.math.BigDecimal;
 
@@ -12,9 +14,11 @@ public class Employee {
 	private String photo;
 	private BigDecimal productivity;
 	private BigDecimal clumsiness;
+	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name = "company_id")
 	private Company company;
+	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name = "player_id")
 	private Player player;
