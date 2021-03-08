@@ -18,24 +18,9 @@ public class CompanyDTO {
 	private Integer employeesNumber;
 	private BigDecimal accidentRiskIndex;
 	@NotNull
-	private BusinessModel businessModel;
+	private Long businessModel;
 	@NotNull
-	private Player player;
-
-	public CompanyDTO() {
-	}
-
-	public CompanyDTO(String companyName, BigDecimal revenue, BigDecimal maintenance,
-					  Integer employeesNumber, BigDecimal accidentRiskIndex,
-					  BusinessModel businessModel, Player player) {
-		this.companyName = companyName;
-		this.revenue = revenue;
-		this.maintenance = maintenance;
-		this.employeesNumber = employeesNumber;
-		this.accidentRiskIndex = accidentRiskIndex;
-		this.businessModel = businessModel;
-		this.player = player;
-	}
+	private Long player;
 
 	public String getCompanyName() {
 		return companyName;
@@ -77,19 +62,19 @@ public class CompanyDTO {
 		this.accidentRiskIndex = accidentRiskIndex;
 	}
 
-	public BusinessModel getBusinessModel() {
+	public Long getBusinessModel() {
 		return businessModel;
 	}
 
-	public void setBusinessModel(BusinessModel businessModel) {
+	public void setBusinessModel(Long businessModel) {
 		this.businessModel = businessModel;
 	}
 
-	public Player getPlayer() {
+	public Long getPlayer() {
 		return player;
 	}
 
-	public void setPlayer(Player player) {
+	public void setPlayer(Long player) {
 		this.player = player;
 	}
 

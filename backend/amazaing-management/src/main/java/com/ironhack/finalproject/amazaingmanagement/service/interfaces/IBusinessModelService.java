@@ -7,5 +7,6 @@ import java.util.List;
 public interface IBusinessModelService {
 
 	List<BusinessModel> getAllBusinessModel();
+	BusinessModel getBusinessModelById(Long id);
 
 }

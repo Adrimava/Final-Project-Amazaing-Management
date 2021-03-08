@@ -2,8 +2,12 @@ package com.ironhack.finalproject.amazaingmanagement.service.impl;
 
 import com.ironhack.finalproject.amazaingmanagement.controller.dto.CompanyDTO;
 import com.ironhack.finalproject.amazaingmanagement.model.Company;
+import com.ironhack.finalproject.amazaingmanagement.repository.BusinessModelRepository;
 import com.ironhack.finalproject.amazaingmanagement.repository.CompanyRepository;
+import com.ironhack.finalproject.amazaingmanagement.repository.PlayerRepository;
+import com.ironhack.finalproject.amazaingmanagement.service.interfaces.IBusinessModelService;
 import com.ironhack.finalproject.amazaingmanagement.service.interfaces.ICompanyService;
+import com.ironhack.finalproject.amazaingmanagement.service.interfaces.IPlayerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -17,6 +21,12 @@ public class CompanyService implements ICompanyService {
 
 	@Autowired
 	private CompanyRepository companyRepository;
+
+	@Autowired
+	private IBusinessModelService businessModelService;
+
+	@Autowired
+	private IPlayerService playerService;
 
 	@Override
 	public List<Company> getAllCompanies() {
@@ -42,8 +52,8 @@ public class CompanyService implements ICompanyService {
 				companyDTO.getMaintenance(),
 				companyDTO.getEmployeesNumber(),
 				companyDTO.getAccidentRiskIndex(),
-				companyDTO.getBusinessModel(),
-				companyDTO.getPlayer()
+				businessModelService.getBusinessModelById(companyDTO.getBusinessModel()),
+				playerService.getPlayerById(companyDTO.getPlayer())
 		);
 
 		return companyRepository.save(company);
@@ -60,8 +70,8 @@ public class CompanyService implements ICompanyService {
 				companyDTO.getMaintenance(),
 				companyDTO.getEmployeesNumber(),
 				companyDTO.getAccidentRiskIndex(),
-				companyDTO.getBusinessModel(),
-				companyDTO.getPlayer()
+				businessModelService.getBusinessModelById(companyDTO.getBusinessModel()),
+				playerService.getPlayerById(companyDTO.getPlayer())
 		);
 		company.setCompanyId(id);
 		companyRepository.save(company);
