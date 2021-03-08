@@ -1,5 +1,7 @@
 package com.ironhack.finalproject.amazaingmanagement.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
@@ -17,6 +19,7 @@ public class BusinessModel {
 	private BigDecimal averageRevenue;
 	private BigDecimal dailyCosts;
 	private BigDecimal employeeSalary;
+	@JsonIgnore
 	@OneToMany(mappedBy = "businessModel")
 	private List<Company> companies;
 

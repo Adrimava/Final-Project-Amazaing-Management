@@ -16,15 +16,6 @@ public class PlayerDTO {
 	private BigDecimal money;
 	private String photo;
 
-	public PlayerDTO() {
-	}
-
-	public PlayerDTO(String playerName, BigDecimal money, String photo) {
-		this.playerName = playerName;
-		this.money = money;
-		this.photo = photo;
-	}
-
 	public String getPlayerName() {
 		return playerName;
 	}

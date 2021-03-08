@@ -1,37 +1,33 @@
-package com.ironhack.finalproject.amazaingmanagement.model;
+package com.ironhack.finalproject.amazaingmanagement.controller.dto;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.ironhack.finalproject.amazaingmanagement.model.BusinessModel;
+import com.ironhack.finalproject.amazaingmanagement.model.Employee;
+import com.ironhack.finalproject.amazaingmanagement.model.Player;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 import java.util.List;
 
-@Entity
-public class Company {
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long companyId;
+public class CompanyDTO {
+	@NotEmpty
 	private String companyName;
 	private BigDecimal revenue;
 	private BigDecimal maintenance;
 	private Integer employeesNumber;
 	private BigDecimal accidentRiskIndex;
-	@ManyToOne
-	@JoinColumn(name = "model_id")
+	@NotNull
 	private BusinessModel businessModel;
-	@JsonIgnore
-	@ManyToOne
-	@JoinColumn(name = "player_id")
+	@NotNull
 	private Player player;
-	@OneToMany(mappedBy = "company")
-	private List<Employee> employees;
 
-	public Company() {
+	public CompanyDTO() {
 	}
 
-	public Company(String companyName, BigDecimal revenue, BigDecimal maintenance,
-				   Integer employeesNumber, BigDecimal accidentRiskIndex,
-				   BusinessModel businessModel, Player player) {
+	public CompanyDTO(String companyName, BigDecimal revenue, BigDecimal maintenance,
+					  Integer employeesNumber, BigDecimal accidentRiskIndex,
+					  BusinessModel businessModel, Player player) {
 		this.companyName = companyName;
 		this.revenue = revenue;
 		this.maintenance = maintenance;
@@ -39,14 +35,6 @@ public class Company {
 		this.accidentRiskIndex = accidentRiskIndex;
 		this.businessModel = businessModel;
 		this.player = player;
-	}
-
-	public Long getCompanyId() {
-		return companyId;
-	}
-
-	public void setCompanyId(Long companyId) {
-		this.companyId = companyId;
 	}
 
 	public String getCompanyName() {
@@ -105,11 +93,4 @@ public class Company {
 		this.player = player;
 	}
 
-	public List<Employee> getEmployees() {
-		return employees;
-	}
-
-	public void setEmployees(List<Employee> employees) {
-		this.employees = employees;
-	}
 }
