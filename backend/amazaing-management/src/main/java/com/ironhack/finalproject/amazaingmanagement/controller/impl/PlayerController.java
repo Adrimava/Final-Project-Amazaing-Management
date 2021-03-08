@@ -3,7 +3,7 @@ package com.ironhack.finalproject.amazaingmanagement.controller.impl;
 import com.ironhack.finalproject.amazaingmanagement.controller.dto.PlayerDTO;
 import com.ironhack.finalproject.amazaingmanagement.controller.interfaces.IPlayerController;
 import com.ironhack.finalproject.amazaingmanagement.model.Player;
-import com.ironhack.finalproject.amazaingmanagement.service.impl.PlayerService;
+import com.ironhack.finalproject.amazaingmanagement.service.interfaces.IPlayerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -14,7 +14,7 @@ import java.util.List;
 public class PlayerController implements IPlayerController {
 
 	@Autowired
-	private PlayerService playerService;
+	private IPlayerService playerService;
 
 	@GetMapping("/players")
 	@ResponseStatus(HttpStatus.OK)
