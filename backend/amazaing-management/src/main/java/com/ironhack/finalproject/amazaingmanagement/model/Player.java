@@ -14,7 +14,7 @@ public class Player {
 	private String photo;
 	@OneToMany(mappedBy = "player")
 	private List<Company> companies;
-	@OneToMany(mappedBy = "playerx")
+	@OneToMany(mappedBy = "player")
 	private List<Employee> employees;
 
 	public Player() {

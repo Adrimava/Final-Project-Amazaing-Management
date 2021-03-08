@@ -17,7 +17,7 @@ public class Employee {
 	private Company company;
 	@ManyToOne
 	@JoinColumn(name = "player_id")
-	private Player playerx;
+	private Player player;
 
 	public Employee() {
 	}
@@ -29,7 +29,7 @@ public class Employee {
 		this.productivity = productivity;
 		this.clumsiness = clumsiness;
 		this.company = company;
-		this.playerx = player;
+		this.player = player;
 	}
 
 	public Long getEmployeeId() {
@@ -80,11 +80,11 @@ public class Employee {
 		this.company = company;
 	}
 
-	public Player getPlayerx() {
-		return playerx;
+	public Player getPlayer() {
+		return player;
 	}
 
-	public void setPlayerx(Player playerx) {
-		this.playerx = playerx;
+	public void setPlayer(Player player) {
+		this.player = player;
 	}
 }
