@@ -40,12 +40,12 @@ export class AmazaingManagementService {
 
   storePlayer(player: any): void {
     this.http.post(`http://localhost:8080/player`, player).subscribe(data=>
-    console.log('Post new Player'));
+    console.log('Posted new Player'));
   }
 
   updatePlayer(id: number, player: any): void {
     this.http.put(`http://localhost:8080/player/${id}`, player).subscribe(data=>
-    console.log('Update Player'));
+    console.log('Player updated'));
   }
 
   deletePlayer(id: number): void {
@@ -62,21 +62,21 @@ export class AmazaingManagementService {
     }
   
     getCompanyById(id: number): Observable<Company> {
-      return this.http.get<Company>(`http://localhost:8080/Company/${id}`);
+      return this.http.get<Company>(`http://localhost:8080/company/${id}`);
     }
   
     storeCompany(company: any): void {
       this.http.post(`http://localhost:8080/company`, company).subscribe(data=>
-      console.log('Post new company'));
+      console.log('Posted new company'));
     }
   
     updateCompany(id: number, company: any): void {
       this.http.put(`http://localhost:8080/company/${id}`, company).subscribe(data=>
-      console.log('Update company'));
+      console.log('company updated'));
     }
   
     deleteCompany(id: number): void {
-      this.http.delete(`http://localhost:8080/Company/${id}`).subscribe(data=>
+      this.http.delete(`http://localhost:8080/company/${id}`).subscribe(data=>
       console.log(`Deleted Company with id ${id}`));
     }
 
