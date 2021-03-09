@@ -1,8 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { PlayerDTO } from '../models/player-dto';
-import { BusinessModel, Player } from './interfaces/database.interface';
+import { BusinessModel, Company, Player } from './interfaces/database.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -53,5 +52,32 @@ export class AmazaingManagementService {
     this.http.delete(`http://localhost:8080/player/${id}`).subscribe(data=>
     console.log(`Deleted player with id ${id}`));
   }
+
+  /**
+   *  Company service
+   */
+
+    getAllCompanies(): Observable<Company[]> {
+      return this.http.get<Company[]>('http://localhost:8080/companies');
+    }
+  
+    getCompanyById(id: number): Observable<Company> {
+      return this.http.get<Company>(`http://localhost:8080/Company/${id}`);
+    }
+  
+    storeCompany(company: any): void {
+      this.http.post(`http://localhost:8080/company`, company).subscribe(data=>
+      console.log('Post new company'));
+    }
+  
+    updateCompany(id: number, company: any): void {
+      this.http.put(`http://localhost:8080/company/${id}`, company).subscribe(data=>
+      console.log('Update company'));
+    }
+  
+    deleteCompany(id: number): void {
+      this.http.delete(`http://localhost:8080/Company/${id}`).subscribe(data=>
+      console.log(`Deleted Company with id ${id}`));
+    }
 
 }

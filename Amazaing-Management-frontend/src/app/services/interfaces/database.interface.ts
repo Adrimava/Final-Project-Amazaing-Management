@@ -1,3 +1,7 @@
+/**
+ * Business Model interface
+ */
+
 export interface BusinessModel {
     modelId: number,
     modelName: string,
@@ -8,6 +12,10 @@ export interface BusinessModel {
     dailyCosts: number,
     employeeSalary: number
 }
+
+/**
+ * Player interface
+ */
 
 export interface Player {    
     playerId: number,
@@ -20,6 +28,29 @@ export interface Player {
             companyName: string,
         }
     ],
+    employees: [
+        {
+            employeeId: number,
+            employeeName: string
+        }
+    ]
+}
+
+/**
+ * Company interface
+ */
+
+export interface Company {
+    companyId: number,
+    companyName: string,
+    revenue: number,
+    maintenance: number,
+    employeesNumber: number,
+    accidentRiskIndex: number,
+    businessModel: {
+        modelId: number,
+        modelName: string
+    },
     employees: [
         {
             employeeId: number,

@@ -6,12 +6,14 @@ import { AppComponent } from './app.component';
 import { BusinessModelComponent } from './components/business-model/business-model.component';
 import { PlayerComponent } from './components/player/player.component';
 import { FormsModule } from '@angular/forms';
+import { CompanyComponent } from './components/company/company.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     BusinessModelComponent,
-    PlayerComponent
+    PlayerComponent,
+    CompanyComponent
   ],
   imports: [
     BrowserModule,
