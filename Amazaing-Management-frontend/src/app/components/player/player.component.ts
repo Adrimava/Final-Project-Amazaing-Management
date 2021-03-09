@@ -45,6 +45,15 @@ export class PlayerComponent implements OnInit {
     this.playerName = '';
   }
 
+  updatePlayer(id: number): void {
+    let player: PlayerDTO = new PlayerDTO(this.playerName, this.money, this.playerPhoto);
+    this.amazaingManagementService.updatePlayer(id, this.body(player));
+  }
+
+  deletePlayer(id: number): void {
+    this.amazaingManagementService.deletePlayer(id);
+  }
+
   body(player: PlayerDTO): any {
     let playerBody: any = {
       playerName: player.playerName,

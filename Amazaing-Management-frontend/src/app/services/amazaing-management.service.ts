@@ -41,15 +41,17 @@ export class AmazaingManagementService {
 
   storePlayer(player: any): void {
     this.http.post(`http://localhost:8080/player`, player).subscribe(data=>
-    console.log('Post new Trainer'));
+    console.log('Post new Player'));
   }
 
-  updatePlayer(id: number, player: Player): Observable<Player> {
-    return this.http.put<Player>(`http://localhost:8080/player/${id}`, player);
+  updatePlayer(id: number, player: any): void {
+    this.http.put(`http://localhost:8080/player/${id}`, player).subscribe(data=>
+    console.log('Update Player'));
   }
 
   deletePlayer(id: number): void {
-    this.http.delete(`http://localhost:8080/player/${id}`)
+    this.http.delete(`http://localhost:8080/player/${id}`).subscribe(data=>
+    console.log(`Deleted player with id ${id}`));
   }
 
 }

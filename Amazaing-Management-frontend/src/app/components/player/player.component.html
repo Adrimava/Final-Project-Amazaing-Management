@@ -20,8 +20,12 @@
         <p class="error-msg" *ngIf="inputMoney.invalid && inputMoney.touched">Don't you want any money?</p>
 
         <button type="submit" [disabled]="form.invalid">Create Player</button>
-
+        
     </form>
 </div>
+
+<button (click)="updatePlayer(1)">Update Player 1</button>
+
+<button (click)="deletePlayer(3)">Delete player 3</button>
 
 <h2>{{ playerName }} - {{ money }} - {{ playerPhoto }}</h2>
