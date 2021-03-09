@@ -1,0 +1,13 @@
+.row {
+    width: 300px;
+    font-size: 20px;
+  }
+  
+  .row-even {
+      background-color: rgb(255, 255, 187);
+  }
+    
+  .row-odd {
+      background-color:rgb(255, 255, 230);
+  }
+    

@@ -1,0 +1,9 @@
+<h2>Business Models:</h2>
+
+<!-- <h2>{{ businessModelList[0] }}</h2> -->
+
+<div *ngFor="let business of businessModelList; let i = index" [businessModel]="businessModel" >
+    <div [ngClass]="{ 'row': true, 'row-even': index % 2 === 0, 'row-odd': index % 2 !== 0}">
+        <p>{{ business }}</p>    
+    </div>
+</div>

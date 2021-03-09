@@ -1,14 +1,20 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
+import { BusinessModelComponent } from './components/business-model/business-model.component';
+import { PlayerComponent } from './components/player/player.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    BusinessModelComponent,
+    PlayerComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
