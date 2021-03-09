@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { BusinessModel, Company, Player } from './interfaces/database.interface';
+import { BusinessModel, Company, Employee, Player } from './interfaces/database.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -53,6 +53,7 @@ export class AmazaingManagementService {
     console.log(`Deleted player with id ${id}`));
   }
 
+
   /**
    *  Company service
    */
@@ -79,5 +80,33 @@ export class AmazaingManagementService {
       this.http.delete(`http://localhost:8080/company/${id}`).subscribe(data=>
       console.log(`Deleted Company with id ${id}`));
     }
+
+
+  /**
+   *  Employee service
+   */
+
+  getAllEmployees(): Observable<Employee[]> {
+    return this.http.get<Employee[]>('http://localhost:8080/employees');
+  }
+
+  getEmployeeById(id: number): Observable<Employee> {
+    return this.http.get<Employee>(`http://localhost:8080/employee/${id}`);
+  }
+
+  storeEmployee(employee: any): void {
+    this.http.post(`http://localhost:8080/employee`, employee).subscribe(data=>
+    console.log('Posted new Employee'));
+  }
+
+  updateEmployee(id: number, employee: any): void {
+    this.http.put(`http://localhost:8080/employee/${id}`, employee).subscribe(data=>
+    console.log('Employee updated'));
+  }
+
+  deleteEmployee(id: number): void {
+    this.http.delete(`http://localhost:8080/employee/${id}`).subscribe(data=>
+    console.log(`Deleted employee with id ${id}`));
+  }
 
 }

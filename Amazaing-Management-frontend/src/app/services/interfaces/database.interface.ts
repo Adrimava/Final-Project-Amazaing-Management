@@ -58,4 +58,16 @@ export interface Company {
         }
     ]
 }
+
+/**
+ * Employee interface
+ */
+
+export interface Employee{
+    employeeId: number,
+    employeeName: string,
+    photo: string,
+    productivity: number,
+    clumsiness: number
+}
     

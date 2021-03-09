@@ -7,13 +7,15 @@ import { BusinessModelComponent } from './components/business-model/business-mod
 import { PlayerComponent } from './components/player/player.component';
 import { FormsModule } from '@angular/forms';
 import { CompanyComponent } from './components/company/company.component';
+import { EmployeeComponent } from './components/employee/employee.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     BusinessModelComponent,
     PlayerComponent,
-    CompanyComponent
+    CompanyComponent,
+    EmployeeComponent
   ],
   imports: [
     BrowserModule,
