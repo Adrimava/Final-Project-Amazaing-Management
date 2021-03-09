@@ -10,11 +10,16 @@ CREATE TABLE player(
     PRIMARY KEY(player_id)
 );
 
+INSERT INTO player(player_name, money, photo) VALUES
+	('Richie Mc.Money', 1000000, 'noPhoto'),
+    ('Poor Boy', 100, 'noPhoto')
+;
+
 CREATE TABLE business_model(
 	model_id BIGINT NOT NULL,
     model_name VARCHAR(255),
     photo VARCHAR(255),
-    purchase_price VARCHAR(255),
+    purchase_price DECIMAL,
     max_employees INT,
     average_revenue DECIMAL,
     daily_costs DECIMAL,
@@ -22,10 +27,10 @@ CREATE TABLE business_model(
     PRIMARY KEY(model_id)
 );
 
-INSERT INTO business_model(model_name, purchase_price, max_employees, average_revenue, daily_costs, employee_salary) VALUES
-	('Lemonade Stand', 600, 2, 100, 10, 20),
-    ('Kiosk', 1, 1000, 100, 40, 30),
-    ('Khlav Kalash Cart', 450, 1, 50, 10, 20)
+INSERT INTO business_model(model_id, model_name, purchase_price, max_employees, average_revenue, daily_costs, employee_salary) VALUES
+	(1, 'Lemonade Stand', 600, 2, 100, 10, 20),
+    (2, 'Kiosk', 1000, 1, 100, 40, 30),
+    (3, 'Khlav Kalash Cart', 450, 1, 50, 10, 20)
 ;
 
 CREATE TABLE company(
@@ -33,7 +38,7 @@ CREATE TABLE company(
     company_name VARCHAR(255),
     revenue DECIMAL,
     maintenance DECIMAL,
-    employees INT,
+    employees_number INT,
     accident_risk_index DECIMAL,
     model_id BIGINT NOT NULL,
     player_id BIGINT NOT NULL,
@@ -41,6 +46,13 @@ CREATE TABLE company(
 	FOREIGN KEY(model_id) REFERENCES business_model(model_id),
     FOREIGN KEY(player_id) REFERENCES player(player_id)
 );
+
+INSERT INTO company(company_name, revenue, maintenance, employees_number, accident_risk_index, model_id, player_id) VALUES
+	('The Great Stand', 75, 25, 1, 25, 1, 1),
+    ('Lemon Party', 80, 35, 2, 40, 1, 1),
+    ('Sneed Feed and Seed', 90, 40, 1, 15, 2, 1),
+    ('Just Khlav Kalash', 40, 10, 1, 5, 3, 2)
+;
 
 CREATE TABLE employee(
 	employee_id BIGINT NOT NULL AUTO_INCREMENT,
@@ -54,3 +66,11 @@ CREATE TABLE employee(
     FOREIGN KEY(player_id) REFERENCES player(player_id),
     PRIMARY KEY(employee_id)    
 );
+
+INSERT INTO employee(employee_name, photo, productivity, clumsiness, company_id, player_id) VALUES
+	('Sara Penguin', 'noPhoto', 60, 15, 1, 1),
+    ('Celia Penguin', 'noPhoto', 50, 10, 1, 1),
+    ('Lemoncio Sour', 'noPhoto', 35, 20, 2, 1),
+    ('Sneed Fisher', 'noPhoto', 40, 19, 3, 1),
+    ('Khlav Kalash Guy', 'noPhoto', 95, 34, 4, 2)
+;
