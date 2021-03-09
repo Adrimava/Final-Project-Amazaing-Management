@@ -1,4 +1,5 @@
 <h2>Business Models:</h2>
+<p>Call by id: {{ businessModel.modelId }}: {{ businessModel.modelName }}</p>
 <div *ngFor="let business of businessModelList; let i = index">
 	<div [ngClass]="{ 'row': true, 'row-even': i % 2 === 0, 'row-odd': i % 2 !== 0}">
 		{{ business.modelName }}

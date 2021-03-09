@@ -1,3 +1,14 @@
+export interface BusinessModel {
+    modelId: number,
+    modelName: string,
+    photo: string,
+    purchasePrice: number,
+    maxEmployees: number,
+    averageRevenue: number,
+    dailyCosts: number,
+    employeeSalary: number
+}
+
 export interface Player {    
     playerId: number,
     playerName: string,
@@ -16,14 +27,4 @@ export interface Player {
         }
     ]
 }
-
-export interface BusinessModel {
-    modelId: number,
-    modelName: string,
-    photo: string,
-    purchasePrice: number,
-    maxEmployees: number,
-    averageRevenue: number,
-    dailyCosts: number,
-    employeeSalary: number
-}
+    

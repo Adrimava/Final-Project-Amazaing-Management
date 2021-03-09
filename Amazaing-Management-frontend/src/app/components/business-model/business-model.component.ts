@@ -10,17 +10,18 @@ import { BusinessModel } from 'src/app/services/interfaces/database.interface';
 export class BusinessModelComponent implements OnInit {
 
   businessModelList: BusinessModel[] = [];
-  businessModel: BusinessModel = null;
+  businessModel: BusinessModel;
 
   constructor(
     private amazaingManagementService: AmazaingManagementService
   ) { }
 
   ngOnInit(): void {
-    this.showBusinessModels();
+    this.getBusinessModels();
+    this.businessModelDetails(1);
   }
 
-  showBusinessModels(): void {
+  getBusinessModels(): void {
     this.amazaingManagementService.getAllBusinessModel().subscribe(result => {
       this.businessModelList = result;
     }, error => {
@@ -28,7 +29,7 @@ export class BusinessModelComponent implements OnInit {
     });
   }
 
-  showDetails(id: number): void {
+  businessModelDetails(id: number): void {
     this.amazaingManagementService.getBusinessModelById(id).subscribe(result => {
       this.businessModel = result;
     });

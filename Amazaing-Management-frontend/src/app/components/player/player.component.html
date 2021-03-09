@@ -1,1 +1,27 @@
-<p>player works!</p>
+<h2>Players:</h2>
+<p>Call by id: {{ player.playerId }}: {{ player.playerName }}</p>
+<div *ngFor="let business of playerList; let i = index">
+	<div [ngClass]="{ 'row': true, 'row-even': i % 2 === 0, 'row-odd': i % 2 !== 0}">
+		{{ business.playerName }}
+	</div>
+</div>
+
+<div class="form">
+    <form (ngSubmit)="createPlayer()" #form="ngForm">
+
+        <label for="playerName">Player Name:</label><br>
+        <input type="text" ngModel required #inputName="ngModel" name="playerName" placeholder="Wall Street Puppy"
+                [(ngModel)]="playerName"><br>
+        <p class="error-msg" *ngIf="inputName.invalid && inputName.touched">Don't forget to write your name!</p>
+
+        <label for="money">money:</label><br>
+        <input type="number" ngModel required #inputMoney="ngModel" name="money"
+                [(ngModel)]="money"><br>
+        <p class="error-msg" *ngIf="inputMoney.invalid && inputMoney.touched">Don't you want any money?</p>
+
+        <button type="submit" [disabled]="form.invalid">Create Player</button>
+
+    </form>
+</div>
+
+<h2>{{ playerName }} - {{ money }} - {{ playerPhoto }}</h2>
