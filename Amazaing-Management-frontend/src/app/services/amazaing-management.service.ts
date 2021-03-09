@@ -39,8 +39,9 @@ export class AmazaingManagementService {
     return this.http.get<Player>(`http://localhost:8080/player/${id}`);
   }
 
-  storePlayer(player: PlayerDTO): void {
-    this.http.post<PlayerDTO>(`http://localhost:8080/player`, player);
+  storePlayer(player: any): void {
+    this.http.post(`http://localhost:8080/player`, player).subscribe(data=>
+    console.log('Post new Trainer'));
   }
 
   updatePlayer(id: number, player: Player): Observable<Player> {

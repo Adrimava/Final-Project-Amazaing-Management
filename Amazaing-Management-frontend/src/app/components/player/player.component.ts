@@ -41,8 +41,17 @@ export class PlayerComponent implements OnInit {
 
   createPlayer(): void {
     let player: PlayerDTO = new PlayerDTO(this.playerName, this.money, this.playerPhoto);
-    this.amazaingManagementService.storePlayer(player);
+    this.amazaingManagementService.storePlayer(this.body(player));
     this.playerName = '';
+  }
+
+  body(player: PlayerDTO): any {
+    let playerBody: any = {
+      playerName: player.playerName,
+      money: player.money,
+      photo: player.photo
+    }
+    return playerBody;
   }
 
 }
