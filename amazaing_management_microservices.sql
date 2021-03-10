@@ -1,3 +1,25 @@
+DROP SCHEMA IF EXISTS business_model;
+CREATE SCHEMA business_model;
+USE business_model;
+
+CREATE TABLE business_model(
+	model_id BIGINT NOT NULL,
+    model_name VARCHAR(255),
+    photo VARCHAR(255),
+    purchase_price DECIMAL,
+    max_employees INT,
+    average_revenue DECIMAL,
+    daily_costs DECIMAL,
+    employee_salary DECIMAL,
+    PRIMARY KEY(model_id)
+);
+
+INSERT INTO business_model(model_id, model_name, purchase_price, max_employees, average_revenue, daily_costs, employee_salary) VALUES
+	(1, 'Lemonade Stand', 600, 2, 100, 10, 20),
+    (2, 'Kiosk', 1000, 1, 100, 40, 30),
+    (3, 'Khlav Kalash Cart', 450, 1, 50, 10, 20)
+;
+
 DROP SCHEMA IF EXISTS player;
 CREATE SCHEMA player;
 USE player;

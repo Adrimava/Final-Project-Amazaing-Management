@@ -1,6 +1,6 @@
-package com.ironhack.amazaingmanagementedgeservice.repository;
+package com.ironhack.businessmodelservice.repository;
 
-import com.ironhack.amazaingmanagementedgeservice.model.BusinessModel;
+import com.ironhack.businessmodelservice.model.BusinessModel;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
