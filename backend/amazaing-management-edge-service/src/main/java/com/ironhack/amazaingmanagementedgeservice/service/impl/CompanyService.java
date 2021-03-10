@@ -1,5 +1,6 @@
 package com.ironhack.amazaingmanagementedgeservice.service.impl;
 
+import com.ironhack.amazaingmanagementedgeservice.client.CompanyClient;
 import com.ironhack.amazaingmanagementedgeservice.controller.dto.CompanyDTO;
 import com.ironhack.amazaingmanagementedgeservice.model.Company;
 import com.ironhack.amazaingmanagementedgeservice.repository.CompanyRepository;
@@ -17,69 +18,46 @@ import java.util.Optional;
 @Service
 public class CompanyService implements ICompanyService {
 
-	@Autowired
-	private CompanyRepository companyRepository;
+//	@Autowired
+//	private CompanyRepository companyRepository;
+//
+//	@Autowired
+//	private IBusinessModelService businessModelService;
+//
+//	@Autowired
+//	private IPlayerService playerService;
 
 	@Autowired
-	private IBusinessModelService businessModelService;
-
-	@Autowired
-	private IPlayerService playerService;
+	private CompanyClient companyClient;
 
 	@Override
 	public List<Company> getAllCompanies() {
-		return companyRepository.findAll();
+
+		return companyClient.getAllCompanies();
 	}
 
 	@Override
 	public Company getCompanyById(Long id) {
-		Optional<Company> company = companyRepository.findById(id);
 
-		if(company.isPresent()) {
-			return company.get();
-		} else {
-			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Company not Found");
-		}
+		return companyClient.getCompanyById(id);
 	}
 
 	@Override
 	public Company storeCompany(CompanyDTO companyDTO) {
-		Company company = new Company(
-				companyDTO.getCompanyName(),
-				companyDTO.getRevenue(),
-				companyDTO.getMaintenance(),
-				companyDTO.getEmployeesNumber(),
-				companyDTO.getAccidentRiskIndex(),
-				businessModelService.getBusinessModelById(companyDTO.getBusinessModel()),
-				playerService.getPlayerById(companyDTO.getPlayer())
-		);
 
-		return companyRepository.save(company);
+		return companyClient.storeCompany(companyDTO);
 	}
 
 	@Override
 	public void updateCompany(Long id, CompanyDTO companyDTO) {
-		Company company;
 
-		getCompanyById(id);
-		company = new Company(
-				companyDTO.getCompanyName(),
-				companyDTO.getRevenue(),
-				companyDTO.getMaintenance(),
-				companyDTO.getEmployeesNumber(),
-				companyDTO.getAccidentRiskIndex(),
-				businessModelService.getBusinessModelById(companyDTO.getBusinessModel()),
-				playerService.getPlayerById(companyDTO.getPlayer())
-		);
-		company.setCompanyId(id);
-		companyRepository.save(company);
+		companyClient.updateCompany(id, companyDTO);
 	}
 
 	@Override
 	public void deleteCompany(Long id) {
 
-		getCompanyById(id);
-		companyRepository.deleteById(id);
+		companyClient.deleteCompany(id);
 	}
 
 }

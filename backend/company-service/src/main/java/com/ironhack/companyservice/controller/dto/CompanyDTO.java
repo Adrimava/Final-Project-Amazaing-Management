@@ -1,4 +1,4 @@
-package com.ironhack.amazaingmanagementedgeservice.controller.dto;
+package com.ironhack.companyservice.controller.dto;
 
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
