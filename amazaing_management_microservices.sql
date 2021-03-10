@@ -65,3 +65,64 @@ INSERT INTO player_employees(employee_id, player_id) VALUES
     (4, 1),
     (5, 2)
 ;
+
+DROP SCHEMA IF EXISTS company;
+CREATE SCHEMA company;
+USE company;
+
+CREATE TABLE company(
+	company_id BIGINT NOT NULL AUTO_INCREMENT,
+    company_name VARCHAR(255),
+    revenue DECIMAL,
+    maintenance DECIMAL,
+    employees_number INT,
+    accident_risk_index DECIMAL,
+    business_model_id BIGINT NOT NULL,
+    player_id BIGINT NOT NULL,
+    PRIMARY KEY(company_id)
+);
+
+INSERT INTO company(company_name, revenue, maintenance, employees_number, accident_risk_index, business_model_id, player_id) VALUES
+	('The Great Stand', 75, 25, 1, 25, 1, 1),
+    ('Lemon Party', 80, 35, 2, 40, 1, 1),
+    ('Sneed Feed and Seed', 90, 40, 1, 15, 2, 1),
+    ('Just Khlav Kalash', 40, 10, 1, 5, 3, 2)
+;
+
+CREATE TABLE company_employees(
+	employee_id BIGINT NOT NULL,
+    company_id BIGINT NOT NULL,
+    PRIMARY KEY (employee_id),
+    FOREIGN KEY (company_id) REFERENCES company(company_id)
+);
+
+INSERT INTO company_employees(employee_id, company_id) VALUES
+	(1, 1),
+    (2, 1),
+    (3, 2),
+    (4, 3),
+    (5, 4)
+;
+
+DROP SCHEMA IF EXISTS employee;
+CREATE SCHEMA employee;
+USE employee;
+
+CREATE TABLE employee(
+	employee_id BIGINT NOT NULL AUTO_INCREMENT,
+    employee_name VARCHAR(255),
+    photo VARCHAR(255),
+    productivity DECIMAL,
+    clumsiness DECIMAL,
+    company_id BIGINT NOT NULL,
+    player_id BIGINT NOT NULL,
+    PRIMARY KEY(employee_id)    
+);
+
+INSERT INTO employee(employee_name, photo, productivity, clumsiness, company_id, player_id) VALUES
+	('Sara Penguin', 'noPhoto', 60, 15, 1, 1),
+    ('Celia Penguin', 'noPhoto', 50, 10, 1, 1),
+    ('Lemoncio Sour', 'noPhoto', 35, 20, 2, 1),
+    ('Sneed Fisher', 'noPhoto', 40, 19, 3, 1),
+    ('Khlav Kalash Guy', 'noPhoto', 95, 34, 4, 2)
+;
