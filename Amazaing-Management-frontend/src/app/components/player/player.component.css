@@ -22,4 +22,31 @@ form {
     color: red;
     font-size: 12px;
 }
+
+.header {
+    height: 100px;
+    background-color: aliceblue;
+    display: flex;
+    justify-content: space-around;
+}
+
+.header div {
+    border-right: 4px dashed blueviolet;
+    border-left: 4px dashed blueviolet;
+    width: 150px;
+    height: 100%;
+    margin: auto;
+    padding: 0 4px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.header div * {
+    margin: auto;
+}
+
+.avatar {
+    height: 100%;
+}
     

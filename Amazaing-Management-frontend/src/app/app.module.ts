@@ -8,6 +8,7 @@ import { PlayerComponent } from './components/player/player.component';
 import { FormsModule } from '@angular/forms';
 import { CompanyComponent } from './components/company/company.component';
 import { EmployeeComponent } from './components/employee/employee.component';
+import { GameBoardComponent } from './game-board/game-board.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { EmployeeComponent } from './components/employee/employee.component';
     BusinessModelComponent,
     PlayerComponent,
     CompanyComponent,
-    EmployeeComponent
+    EmployeeComponent,
+    GameBoardComponent
   ],
   imports: [
     BrowserModule,
