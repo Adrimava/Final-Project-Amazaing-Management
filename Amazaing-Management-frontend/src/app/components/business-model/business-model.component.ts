@@ -11,6 +11,7 @@ export class BusinessModelComponent implements OnInit {
 
   businessModelList: BusinessModel[] = [];
   businessModel: BusinessModel;
+  detailsVisible: boolean = false;
 
   constructor(
     private amazaingManagementService: AmazaingManagementService
@@ -18,7 +19,6 @@ export class BusinessModelComponent implements OnInit {
 
   ngOnInit(): void {
     this.getBusinessModels();
-    this.businessModelDetails(1);
   }
 
   getBusinessModels(): void {
@@ -33,6 +33,9 @@ export class BusinessModelComponent implements OnInit {
     this.amazaingManagementService.getBusinessModelById(id).subscribe(result => {
       this.businessModel = result;
     });
+    if (!this.detailsVisible || id === this.businessModel.modelId) {
+      this.detailsVisible = !this.detailsVisible;
+    }
   }
 
 }

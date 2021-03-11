@@ -14,9 +14,9 @@ export class PlayerComponent implements OnInit {
   player: Player = null;
   playerName: string = '';
   money: number = 1000;
-  playerPhoto: string = 'https://avatars.dicebear.com/api/human/' + this.playerName + '.svg';
-  selectedPlayer: string = '';
+  playerPhoto: string = 'human';
   formIsVisible: boolean = false;
+  gender: string = 'human';
 
   constructor(
     private amazaingManagementService: AmazaingManagementService
@@ -45,7 +45,8 @@ export class PlayerComponent implements OnInit {
     let player: PlayerDTO = new PlayerDTO(this.playerName, this.money, this.playerPhoto);
     this.amazaingManagementService.storePlayer(this.body(player));
     this.playerName = '';
-    this.getPlayers();
+    // this.getPlayers();
+    // this.player = this.playerList[this.playerList.length - 1]
     this.showForm();
   }
 
