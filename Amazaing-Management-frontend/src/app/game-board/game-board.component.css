@@ -1,3 +1,18 @@
+.game-board {
+    display: flex;
+    width: 100%;
+}
+
+.left {
+    width: 300px;
+    border-right: darkblue 3px dotted;
+    min-height: 600px;
+}
+
+.center {
+    width: 100%;
+}
+
 main {
     display: flex;
     flex-direction: row;

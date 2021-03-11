@@ -9,6 +9,7 @@ import { FormsModule } from '@angular/forms';
 import { CompanyComponent } from './components/company/company.component';
 import { EmployeeComponent } from './components/employee/employee.component';
 import { GameBoardComponent } from './game-board/game-board.component';
+import { HeaderComponent } from './header/header.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { GameBoardComponent } from './game-board/game-board.component';
     PlayerComponent,
     CompanyComponent,
     EmployeeComponent,
-    GameBoardComponent
+    GameBoardComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,

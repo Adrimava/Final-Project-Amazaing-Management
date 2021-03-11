@@ -1,0 +1,11 @@
+* {
+    margin: 0;
+    background-color: lightblue;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: "Brush Script MT", "Brush Script Std", cursive;
+    font-size: 40px;
+    color: darkblue;
+}

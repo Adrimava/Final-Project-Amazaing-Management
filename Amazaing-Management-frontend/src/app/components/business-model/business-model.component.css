@@ -1,17 +1,22 @@
+.business-model {
+	display: flex;
+	flex-direction: column;
+}
+
 .row {
     width: 300px;
     font-size: 20px;
 }
   
 .row-even {
-      background-color: rgb(255, 247, 179);
+    background-color: rgb(255, 247, 179);
 }
     
 .row-odd {
-      background-color: rgb(255, 252, 221);
+    background-color: rgb(255, 252, 221);
 }
 
 .details {
-      border: 1px dashed blue;
+    border-top: 2px dashed blue;
 }
     
