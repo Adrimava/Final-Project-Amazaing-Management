@@ -16,6 +16,7 @@ export class PlayerComponent implements OnInit {
   money: number = 1000;
   playerPhoto: string = 'human';
   formIsVisible: boolean = false;
+  difficulty: string = 'easy'
   gender: string = 'human';
 
   constructor(
@@ -24,7 +25,7 @@ export class PlayerComponent implements OnInit {
 
   ngOnInit(): void {
     this.getPlayers();
-    this.playerDetails(1);
+    setTimeout(()=>{ this.playerDetails(this.playerList[0].playerId); }, 50);
   }
 
   getPlayers(): void {
@@ -41,22 +42,33 @@ export class PlayerComponent implements OnInit {
     });
   }
 
-  createPlayer(): void {
+  createPlayer(): void {    
+    if (this.difficulty === 'easy') {
+      this.money = 2000;
+    } else if (this.difficulty === 'medium') {
+      this.money = 1000;
+    } else {
+      this.money = 500;
+    }
     let player: PlayerDTO = new PlayerDTO(this.playerName, this.money, this.playerPhoto);
     this.amazaingManagementService.storePlayer(this.body(player));
     this.playerName = '';
-    // this.getPlayers();
-    // this.player = this.playerList[this.playerList.length - 1]
+    setTimeout(()=>{ this.getPlayers(); }, 100);
+    setTimeout(()=> {this.player = this.playerList[this.playerList.length - 1] }, 200 );  
     this.showForm();
   }
 
   updatePlayer(id: number): void {
     let player: PlayerDTO = new PlayerDTO(this.playerName, this.money, this.playerPhoto);
     this.amazaingManagementService.updatePlayer(id, this.body(player));
+    setTimeout(()=>{ this.getPlayers(); }, 100);
+    setTimeout(()=>{ this.player = this.playerList[this.playerList.length - 1] }, 200 ); 
   }
 
   deletePlayer(id: number): void {
     this.amazaingManagementService.deletePlayer(id);
+    setTimeout(()=>{ this.getPlayers(); }, 100);
+    setTimeout(()=>{ this.player = this.playerList[this.playerList.length - 1] }, 200 ); 
   }
 
   body(player: PlayerDTO): any {
