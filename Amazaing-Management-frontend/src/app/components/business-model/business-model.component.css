@@ -19,4 +19,18 @@
 .details {
     border-top: 2px dashed blue;
 }
+
+.avatar-container {
+    display: flex;
+    justify-content: center;
+}
+
+.avatar {
+    margin: 10px;
+    width: 30%;
+}
+
+p {
+    margin: 5px;
+}
     

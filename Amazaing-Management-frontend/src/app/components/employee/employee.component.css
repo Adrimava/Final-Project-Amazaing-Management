@@ -1,14 +1,94 @@
-.row {
+* {
+    width: 90%;
+    margin: 5px;
+}
+
+.container {
+    display: flex;
+    justify-content: flex-end;
+    align-content: flex-start;
+    flex-wrap: wrap;
+}
+
+.employees {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: auto;
+    flex-wrap: wrap;
+    margin: 0 10px;
+    border-right:  3px rgb(27, 88, 179) solid;
+    border-left:  3px rgb(27, 88, 179) solid;
+    border-bottom: 3px rgb(27, 88, 179) solid;
+    border-top-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    min-width: 300px;
+    padding: 10px;
+    background-color: rgb(124, 174, 248);
+}
+
+.employee-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    background-color: rgb(124, 174, 248);
+    padding: 10px;
+    margin: 5px;
+    width: 100px;
+    border:  5px white solid;
+    border-radius: 50px;
+}
+
+.details {
+    background-color: rgb(124, 174, 248);
     width: 300px;
-    font-size: 20px;
+    border-top:  3px rgb(27, 88, 179) solid;
+    border-bottom:  3px rgb(27, 88, 179) dashed;
+    border-right:  3px rgb(27, 88, 179) solid;
+    border-left:  3px rgb(27, 88, 179) solid;
+    border-top-right-radius: 20px;
+    border-top-left-radius: 20px;
+    margin: 0;
+    margin-right: 10px;
 }
-  
-.row-even {
-    background-color: rgb(131, 202, 0);
+
+.subtitle {
+    width: 200px;
+    position: relative;
+    margin-bottom: 0;
+    margin-right: 12px;
 }
-    
-.row-odd {
-    background-color: rgb(102, 156, 0);
+
+.subtitle h2 {
+    height: 40px;
+    margin-bottom: 0;    
+    position: absolute;
+    bottom: 0;
+    padding-right: 25px;
+    padding-top: 5px;
+    text-align: right;
+    background-color: rgb(124, 174, 248);
+    border-top:  3px rgb(27, 88, 179) solid;
+    border-left:  3px rgb(27, 88, 179) solid;
+    border-top-left-radius: 20px;
+}
+
+.avatar-container {
+    display: flex;
+    justify-content: center;
+}
+
+.avatar {
+    margin: 10px;
+    width: 40%;
+}
+
+p {
+    margin: auto;
+    justify-content: center;
+    padding-bottom: 10px;
 }
 
 form {

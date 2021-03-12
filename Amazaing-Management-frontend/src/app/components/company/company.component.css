@@ -5,7 +5,8 @@
 
 .container {
     display: flex;
-    justify-content: space-between;
+    flex-direction: row;
+    justify-content: flex-start;
     align-content: flex-start;
     flex-wrap: wrap;
 }
@@ -41,12 +42,26 @@
 .details {
     background-color: rgb(245, 168, 168);
     width: 250px;
+    border-top:  3px rgb(190, 119, 119) dashed;
     border-right:  3px rgb(190, 119, 119) solid;
     border-left:  3px rgb(190, 119, 119) solid;
     border-bottom:  3px rgb(190, 119, 119) solid;
     border-bottom-right-radius: 20px;
     border-bottom-left-radius: 20px;
-    margin: 0 10px;
+    margin: 0;
+    margin-left: 10px;
+}
+
+h2 {
+    width: 200px;
+    height: 40px;
+    margin-left: 0;
+    margin-top: 0;
+    padding-left: 25px;
+    background-color: rgb(245, 168, 168);
+    border-bottom:  3px rgb(190, 119, 119) solid;
+    border-right:  3px rgb(190, 119, 119) solid;
+    border-bottom-right-radius: 20px;
 }
 
 p {

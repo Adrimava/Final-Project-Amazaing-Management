@@ -18,6 +18,7 @@ export class EmployeeComponent implements OnInit {
   clumsiness: number = 0;
   company: number = 0;
   player: number = 0;
+  formIsVisible: boolean = false;
 
   constructor(
     private amazaingManagementService: AmazaingManagementService
