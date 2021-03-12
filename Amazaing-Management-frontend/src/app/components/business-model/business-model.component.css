@@ -18,6 +18,7 @@
 
 .details {
     border-top: 2px dashed blue;
+    background-color: aliceblue;
 }
 
 .avatar-container {
@@ -31,6 +32,16 @@
 }
 
 p {
+    margin: 0 15px;
+    padding: 5px;
+}
+
+P:hover {
+    background-color: yellowgreen;
+}
+
+h2 {
+    text-align: center;
     margin: 5px;
 }
     

@@ -8,6 +8,8 @@
     justify-content: flex-end;
     align-content: flex-start;
     flex-wrap: wrap;
+    position: relative;
+    bottom: 200px;
 }
 
 .employees {
@@ -39,6 +41,14 @@
     width: 100px;
     border:  5px white solid;
     border-radius: 50px;
+}
+
+.employee-card:hover {
+    box-shadow: rgb(27, 88, 179) 5px 5px 10px;
+}
+
+.employee-card:active:hover {
+    background-color: rgb(27, 88, 179);
 }
 
 .details {

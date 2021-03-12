@@ -1,0 +1,17 @@
+footer
+{
+  height: 50px;
+  padding: 15px;
+  background-color: aqua;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+footer p
+{
+  color: aliceblue;
+  font-style: italic;
+  font-weight: bold;
+  margin-right: 60px;
+}

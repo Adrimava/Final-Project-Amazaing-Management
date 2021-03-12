@@ -39,9 +39,17 @@
     width: 200px;
 }
 
+.company-card:hover {
+    box-shadow: rgb(190, 119, 119) 5px 5px 10px;
+}
+
+.company-card:active:hover {
+    background-color: rgb(190, 119, 119);
+}
+
 .details {
     background-color: rgb(245, 168, 168);
-    width: 250px;
+    width: 300px;
     border-top:  3px rgb(190, 119, 119) dashed;
     border-right:  3px rgb(190, 119, 119) solid;
     border-left:  3px rgb(190, 119, 119) solid;
@@ -62,6 +70,16 @@ h2 {
     border-bottom:  3px rgb(190, 119, 119) solid;
     border-right:  3px rgb(190, 119, 119) solid;
     border-bottom-right-radius: 20px;
+}
+
+.avatar-container {
+    display: flex;
+    justify-content: center;
+}
+
+.avatar {
+    margin: 10px;
+    width: 30%;
 }
 
 p {

@@ -10,6 +10,7 @@ import { CompanyComponent } from './components/company/company.component';
 import { EmployeeComponent } from './components/employee/employee.component';
 import { GameBoardComponent } from './game-board/game-board.component';
 import { HeaderComponent } from './header/header.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { HeaderComponent } from './header/header.component';
     CompanyComponent,
     EmployeeComponent,
     GameBoardComponent,
-    HeaderComponent
+    HeaderComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

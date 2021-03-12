@@ -3,19 +3,21 @@
 	<div class="companies">
 		<div *ngFor="let company of companyList; let i = index" class="company-card"
 				(click)="companyDetails(company.companyId)">			
-			<p>{{ company.companyName }}</p>		
+			<p>{{ company.companyName }}</p>
 		</div>
 	</div>
 	
 	<div class="details">
+		<div class="avatar-container">
+			<img class="avatar" src="{{ businessModel.photo }}" alt="Business model photo">
+		</div>
 		<div>
 			<p>Name: {{ company.companyName }}</p>
 			<p>Revenue: {{ company.revenue }}</p>
 			<p>Maintenance: {{ company.maintenance }}</p>
 			<p>employeesNumber: {{ company.employeesNumber }}</p> 
 			<p>Accident risk index: {{ company.accidentRiskIndex }}</p>
-			<p>Business model: {{ company.businessModelId }}</p>
-			<p>Player: {{ company.playerId }}</p>
+			<p>Business model: {{ businessModel.modelName }}</p>
 		</div>
 		<button>Sell {{ company.companyName }} </button>
 	</div>

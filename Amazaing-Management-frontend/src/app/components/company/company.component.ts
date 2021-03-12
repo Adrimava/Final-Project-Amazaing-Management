@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CompanyDTO } from 'src/app/models/company-dto';
 import { AmazaingManagementService } from 'src/app/services/amazaing-management.service';
-import { Company } from 'src/app/services/interfaces/database.interface';
+import { BusinessModel, Company } from 'src/app/services/interfaces/database.interface';
 
 @Component({
   selector: 'app-company',
@@ -20,6 +20,7 @@ export class CompanyComponent implements OnInit {
   businessModelId: number = 0;
   playerId: number = 0;
   formIsVisible: boolean = false;
+  businessModel: BusinessModel;
 
   constructor(
     private amazaingManagementService: AmazaingManagementService
@@ -27,6 +28,7 @@ export class CompanyComponent implements OnInit {
 
   ngOnInit(): void {
     this.getCompanies();
+    // this.businessModelDetails(1);
     this.companyDetails(1);
   }
 
@@ -42,6 +44,10 @@ export class CompanyComponent implements OnInit {
     this.amazaingManagementService.getCompanyById(id).subscribe(result => {
       this.company = result;
     });
+    this.amazaingManagementService.getBusinessModelById(id).subscribe(result => {
+      this.businessModel = result;
+    });
+    // this.businessModelDetails(this.company.businessModelId);
   }
 
   createCompany(): void {
@@ -95,4 +101,11 @@ export class CompanyComponent implements OnInit {
     }
     return companyBody;
   }
+
+  businessModelDetails(id: number): void {
+    this.amazaingManagementService.getBusinessModelById(id).subscribe(result => {
+      this.businessModel = result;
+    });
+  }
+
 }
