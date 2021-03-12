@@ -12,6 +12,7 @@ export class BusinessModelComponent implements OnInit {
   businessModelList: BusinessModel[] = [];
   businessModel: BusinessModel;
   detailsVisible: boolean = false;
+  showDetail: Boolean[] = []
 
   constructor(
     private amazaingManagementService: AmazaingManagementService
@@ -35,6 +36,18 @@ export class BusinessModelComponent implements OnInit {
     });
     if (!this.detailsVisible || id === this.businessModel.modelId) {
       this.detailsVisible = !this.detailsVisible;
+    }
+  }
+
+  showDetails(index: number):void {
+    if(this.showDetail[index] === false) {
+      this.showDetail = []
+      for(let i = 0; i < this.businessModelList.length; i++) {
+        this.showDetail.push(false)
+      }
+      this.showDetail[index] = true;
+    } else {
+      this.showDetail[index] = false;
     }
   }
 

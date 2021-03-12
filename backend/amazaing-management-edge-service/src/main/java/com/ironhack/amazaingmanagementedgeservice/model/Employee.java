@@ -5,22 +5,19 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import javax.persistence.*;
 import java.math.BigDecimal;
 
-@Entity
 public class Employee {
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long employeeId;
 	private String employeeName;
 	private String photo;
 	private BigDecimal productivity;
 	private BigDecimal clumsiness;
-	@JsonIgnore
-	@ManyToOne
-	@JoinColumn(name = "company_id")
-	private Company company;
-	@JsonIgnore
-	@ManyToOne
-	@JoinColumn(name = "player_id")
+//	@JsonIgnore
+//	@ManyToOne
+//	@JoinColumn(name = "company_id")
+//	private Company company;
+//	@JsonIgnore
+//	@ManyToOne
+//	@JoinColumn(name = "player_id")
 	private Player player;
 
 	public Employee() {
@@ -32,7 +29,7 @@ public class Employee {
 		this.photo = photo;
 		this.productivity = productivity;
 		this.clumsiness = clumsiness;
-		this.company = company;
+//		this.company = company;
 		this.player = player;
 	}
 
@@ -76,13 +73,13 @@ public class Employee {
 		this.clumsiness = clumsiness;
 	}
 
-	public Company getCompany() {
-		return company;
-	}
-
-	public void setCompany(Company company) {
-		this.company = company;
-	}
+//	public Company getCompany() {
+//		return company;
+//	}
+//
+//	public void setCompany(Company company) {
+//		this.company = company;
+//	}
 
 	public Player getPlayer() {
 		return player;

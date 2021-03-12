@@ -6,21 +6,21 @@ export class CompanyDTO {
         private _maintenance: number,
         private _employeesNumber: number,
         private _accidentRiskIndex: number,
-        private _businessModel: number,
-        private _player: number
+        private _businessModelId: number,
+        private _playerId: number
     ) { }
     
-    public get player(): number {
-        return this._player;
+    public get playerId(): number {
+        return this._playerId;
     }
-    public set player(value: number) {
-        this._player = value;
+    public set playerId(value: number) {
+        this._playerId = value;
     }
-    public get businessModel(): number {
-        return this._businessModel;
+    public get businessModelId(): number {
+        return this._businessModelId;
     }
-    public set businessModel(value: number) {
-        this._businessModel = value;
+    public set businessModelId(value: number) {
+        this._businessModelId = value;
     }
     public get accidentRiskIndex(): number {
         return this._accidentRiskIndex;

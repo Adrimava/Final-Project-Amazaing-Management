@@ -47,14 +47,11 @@ export interface Company {
     maintenance: number,
     employeesNumber: number,
     accidentRiskIndex: number,
-    businessModel: {
-        modelId: number,
-        modelName: string
-    },
+    businessModelId: number,
+    playerId: number,
     employees: [
         {
             employeeId: number,
-            employeeName: string
         }
     ]
 }

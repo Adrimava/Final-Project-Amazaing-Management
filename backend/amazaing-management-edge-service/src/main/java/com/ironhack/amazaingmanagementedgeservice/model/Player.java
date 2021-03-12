@@ -4,17 +4,15 @@ import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.List;
 
-@Entity
 public class Player {
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+
 	private Long playerId;
 	private String playerName;
 	private BigDecimal money;
 	private String photo;
-	@OneToMany(mappedBy = "player")
+//	@OneToMany(mappedBy = "player")
 	private List<Company> companies;
-	@OneToMany(mappedBy = "player")
+//	@OneToMany(mappedBy = "player")
 	private List<Employee> employees;
 
 	public Player() {

@@ -1,44 +1,31 @@
 package com.ironhack.amazaingmanagementedgeservice.model;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.List;
 
-@Entity
 public class Company {
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long companyId;
 	private String companyName;
 	private BigDecimal revenue;
 	private BigDecimal maintenance;
 	private Integer employeesNumber;
 	private BigDecimal accidentRiskIndex;
-	@ManyToOne
-	@JoinColumn(name = "model_id")
-	private BusinessModel businessModel;
-	@JsonIgnore
-	@ManyToOne
-	@JoinColumn(name = "player_id")
-	private Player player;
-	@OneToMany(mappedBy = "company")
-	private List<Employee> employees;
+	private Long businessModelId;
+	private Long playerId;
 
 	public Company() {
 	}
 
 	public Company(String companyName, BigDecimal revenue, BigDecimal maintenance,
 				   Integer employeesNumber, BigDecimal accidentRiskIndex,
-				   BusinessModel businessModel, Player player) {
+				   Long businessModelId, Long playerId) {
 		this.companyName = companyName;
 		this.revenue = revenue;
 		this.maintenance = maintenance;
 		this.employeesNumber = employeesNumber;
 		this.accidentRiskIndex = accidentRiskIndex;
-		this.businessModel = businessModel;
-		this.player = player;
+		this.businessModelId = businessModelId;
+		this.playerId = playerId;
 	}
 
 	public Long getCompanyId() {
@@ -89,27 +76,21 @@ public class Company {
 		this.accidentRiskIndex = accidentRiskIndex;
 	}
 
-	public BusinessModel getBusinessModel() {
-		return businessModel;
+	public Long getBusinessModelId() {
+		return businessModelId;
 	}
 
-	public void setBusinessModel(BusinessModel businessModel) {
-		this.businessModel = businessModel;
+	public void setBusinessModelId(Long businessModelId) {
+		this.businessModelId = businessModelId;
 	}
 
-	public Player getPlayer() {
-		return player;
+	public Long getPlayerId() {
+		return playerId;
 	}
 
-	public void setPlayer(Player player) {
-		this.player = player;
+	public void setPlayerId(Long playerId) {
+		this.playerId = playerId;
 	}
 
-	public List<Employee> getEmployees() {
-		return employees;
-	}
-
-	public void setEmployees(List<Employee> employees) {
-		this.employees = employees;
-	}
 }
+

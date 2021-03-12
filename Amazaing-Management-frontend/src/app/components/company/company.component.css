@@ -1,15 +1,59 @@
-.row {
-    width: 300px;
-    font-size: 20px;
+* {
+    width: 90%;
+    margin: 5px;
 }
-  
-.row-even {
-      background-color: rgb(94, 0, 0);
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-content: flex-start;
+    flex-wrap: wrap;
 }
-    
-.row-odd {
-    background-color: rgb(153, 0, 0);
+
+.companies {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: auto;
+    flex-wrap: wrap;
+    margin: 0 10px;
+    border-top: 3px rgb(190, 119, 119) solid;
+    border-right:  3px rgb(190, 119, 119) solid;
+    border-left:  3px rgb(190, 119, 119) solid;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    min-width: 300px;
+    padding: 10px;
+    background-color: rgb(245, 168, 168);
 }
+
+.company-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: rgb(245, 168, 168);
+    border: 3px white solid;
+    padding: 10px;
+    width: 200px;
+}
+
+.details {
+    background-color: rgb(245, 168, 168);
+    width: 250px;
+    border-right:  3px rgb(190, 119, 119) solid;
+    border-left:  3px rgb(190, 119, 119) solid;
+    border-bottom:  3px rgb(190, 119, 119) solid;
+    border-bottom-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    margin: 0 10px;
+}
+
+p {
+    margin: auto;
+    justify-content: center;
+}
+
 
 form {
     border: 1px black solid;

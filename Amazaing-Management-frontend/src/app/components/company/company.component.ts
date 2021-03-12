@@ -17,8 +17,9 @@ export class CompanyComponent implements OnInit {
   maintenance: number = 0;
   employeesNumber: number = 0;
   accidentRiskIndex: number = 0;
-  businessModel: number = 0;
-  player: number = 0;
+  businessModelId: number = 0;
+  playerId: number = 0;
+  formIsVisible: boolean = false;
 
   constructor(
     private amazaingManagementService: AmazaingManagementService
@@ -50,8 +51,8 @@ export class CompanyComponent implements OnInit {
       this.maintenance,
       this.employeesNumber,
       this.accidentRiskIndex,
-      this.businessModel,
-      this.player
+      this.businessModelId,
+      this.playerId
     );
     
     this.amazaingManagementService.storeCompany(this.body(company));
@@ -60,8 +61,8 @@ export class CompanyComponent implements OnInit {
     this.maintenance = 0;
     this.employeesNumber = 0;
     this.accidentRiskIndex = 0;
-    this.businessModel = 0;
-    this.player = 0;
+    this.businessModelId = 0;
+    this.playerId = 0;
   }
 
   updateCompany(id: number): void {
@@ -71,8 +72,8 @@ export class CompanyComponent implements OnInit {
       this.maintenance,
       this.employeesNumber,
       this.accidentRiskIndex,
-      this.businessModel,
-      this.player
+      this.businessModelId,
+      this.playerId
     );
 
     this.amazaingManagementService.updateCompany(id, this.body(company));
@@ -89,8 +90,8 @@ export class CompanyComponent implements OnInit {
       maintenance: company.maintenance,
       employeesNumber: company.employeesNumber,
       accidentRiskIndex: company.accidentRiskIndex,
-      businessModel: company.businessModel,
-      player: company.player
+      businessModel: company.businessModelId,
+      player: company.playerId
     }
     return companyBody;
   }

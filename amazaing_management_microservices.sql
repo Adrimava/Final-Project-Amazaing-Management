@@ -33,8 +33,8 @@ CREATE TABLE player(
 );
 
 INSERT INTO player(player_name, money, photo) VALUES
-	('Richie Mc.Money', 1000000, 'noPhoto'),
-    ('Poor Boy', 100, 'noPhoto')
+	('Richie Mc.Money', 1000000, 'human'),
+    ('Poor Boy', 100, 'human')
 ;
 
 CREATE TABLE player_companies(

@@ -8,9 +8,7 @@ import javax.persistence.OneToMany;
 import java.math.BigDecimal;
 import java.util.List;
 
-@Entity
 public class BusinessModel {
-	@Id
 	private Long modelId;
 	private String modelName;
 	private String photo;
@@ -19,9 +17,6 @@ public class BusinessModel {
 	private BigDecimal averageRevenue;
 	private BigDecimal dailyCosts;
 	private BigDecimal employeeSalary;
-	@JsonIgnore
-	@OneToMany(mappedBy = "businessModel")
-	private List<Company> companies;
 
 	public BusinessModel() {
 	}
@@ -104,11 +99,4 @@ public class BusinessModel {
 		this.employeeSalary = employeeSalary;
 	}
 
-	public List<Company> getCompanies() {
-		return companies;
-	}
-
-	public void setCompanies(List<Company> companies) {
-		this.companies = companies;
-	}
 }
