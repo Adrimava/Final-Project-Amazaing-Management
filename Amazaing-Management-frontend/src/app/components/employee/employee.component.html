@@ -8,7 +8,7 @@
 
 	<div class="details">
 		<div class="avatar-container">
-			<img class="avatar" src="{{employee.photo}}/{{employee.employeeName}}.svg" alt="Employee photo">
+			<img class="avatar" src="{{employee.photo}}" alt="Employee photo">
 		</div>
 		<div>
 			<p>Employee name: {{ employee.employeeName }}</p>
@@ -22,7 +22,7 @@
 	<div class="employees">
 		<div *ngFor="let employee of employeeList; let i = index" class="employee-card"
 				(click)="employeeDetails(employee.employeeId)">
-			<img src="{{employee.photo}}/{{employee.employeeName}}.svg" alt="Employee photo">
+			<img src="{{employee.photo}}" alt="Employee photo">
 			<p>{{ employee.employeeName }}</p>
 		</div>			
 	</div>
