@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { CompanyDTO } from 'src/app/models/company-dto';
 import { AmazaingManagementService } from 'src/app/services/amazaing-management.service';
 import { BusinessModel, Company } from 'src/app/services/interfaces/database.interface';
@@ -10,6 +10,8 @@ import { BusinessModel, Company } from 'src/app/services/interfaces/database.int
 })
 export class CompanyComponent implements OnInit {
 
+  @Input()
+  currentPlayer: number = 1;
   companyList: Company[] = [];
   company: Company = null;
   companyName: string = '';
@@ -27,23 +29,17 @@ export class CompanyComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.getCompanies();
+    this.getCompanies(this.currentPlayer);
     setTimeout(()=>{ this.businessModelDetails(this.companyList[0].businessModelId) }, 100);
     setTimeout(()=>{ this.companyDetails(this.companyList[0].companyId) }, 100);
   }
 
-  getCompanies(): void {
-    this.amazaingManagementService.getCompaniesByPlayerId(1).subscribe(result => {
+  getCompanies(id: number): void {
+    this.amazaingManagementService.getCompaniesByPlayerId(id).subscribe(result => {
       this.companyList = result;
     }, error => {
       console.log(error);
     });
-
-    // this.amazaingManagementService.getAllCompanies().subscribe(result => {
-    //   this.companyList = result;
-    // }, error => {
-    //   console.log(error);
-    // });
   }
 
   companyDetails(id: number): void {
@@ -51,6 +47,7 @@ export class CompanyComponent implements OnInit {
       this.company = result;
     });
     setTimeout(()=>{ this.businessModelDetails(this.company.businessModelId); }, 100);
+    setTimeout(()=>{ this.getCompanies(this.currentPlayer); }, 100);
   }
 
   createCompany(): void {
@@ -86,14 +83,14 @@ export class CompanyComponent implements OnInit {
     );
 
     this.amazaingManagementService.updateCompany(id, this.body(company));
-    setTimeout(()=>{ this.getCompanies(); }, 100);
+    setTimeout(()=>{ this.getCompanies(this.currentPlayer); }, 100);
     setTimeout(()=>{ this.company = this.companyList[this.companyList.length - 1] }, 200 ); 
   }
 
   deleteCompany(id: number): void {
     if (this.companyList.length > 1) {
       this.amazaingManagementService.deleteCompany(id);
-      setTimeout(()=>{ this.getCompanies(); }, 100);
+      setTimeout(()=>{ this.getCompanies(this.currentPlayer); }, 100);
       setTimeout(()=>{ this.company = this.companyList[this.companyList.length - 1] }, 200 );
     }
   }

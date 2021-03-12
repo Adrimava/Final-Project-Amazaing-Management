@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { EmployeeDTO } from 'src/app/models/employee-dto';
 import { AmazaingManagementService } from 'src/app/services/amazaing-management.service';
 import { Employee } from 'src/app/services/interfaces/database.interface';
@@ -10,6 +10,8 @@ import { Employee } from 'src/app/services/interfaces/database.interface';
 })
 export class EmployeeComponent implements OnInit {
 
+  @Input()
+  currentPlayer: number = 1;
   employeeList: Employee[] = [];
   employee: Employee = null;
   employeeName: string = '';

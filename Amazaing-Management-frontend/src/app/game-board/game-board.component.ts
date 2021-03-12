@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-game-board',
@@ -6,6 +6,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./game-board.component.css']
 })
 export class GameBoardComponent implements OnInit {
+
+  currentPlayer: number = 1;
+
+  getCurrentPlayer($event: number) {
+    this.currentPlayer = $event;
+  }
 
   constructor() { }
 

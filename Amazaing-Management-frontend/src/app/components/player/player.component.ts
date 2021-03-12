@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { PlayerDTO } from 'src/app/models/player-dto';
 import { AmazaingManagementService } from 'src/app/services/amazaing-management.service';
 import { Player } from 'src/app/services/interfaces/database.interface';
@@ -18,6 +18,8 @@ export class PlayerComponent implements OnInit {
   formIsVisible: boolean = false;
   difficulty: string = 'easy'
   gender: string = 'human';
+
+  @Output() sendPlayerEvent = new EventEmitter<number>();
 
   constructor(
     private amazaingManagementService: AmazaingManagementService
@@ -40,6 +42,7 @@ export class PlayerComponent implements OnInit {
     this.amazaingManagementService.getPlayerById(id).subscribe(result => {
       this.player = result;
     });
+    setTimeout(()=>{ this.sendPlayerEvent.emit(this.player.playerId); }, 100);
   }
 
   createPlayer(): void {    
