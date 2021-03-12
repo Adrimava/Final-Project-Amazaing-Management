@@ -11,9 +11,17 @@
 .row-even {
     background-color: rgb(255, 247, 179);
 }
+
+.row-even:hover {
+    background-color: rgb(204, 197, 136);
+}
     
 .row-odd {
     background-color: rgb(255, 252, 221);
+}
+
+.row-odd:hover {
+    background-color: rgb(204, 202, 174);
 }
 
 .details {
@@ -34,10 +42,6 @@
 p {
     margin: 0 15px;
     padding: 5px;
-}
-
-P:hover {
-    background-color: yellowgreen;
 }
 
 h2 {
