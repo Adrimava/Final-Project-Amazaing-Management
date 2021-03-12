@@ -28,26 +28,29 @@ export class CompanyComponent implements OnInit {
 
   ngOnInit(): void {
     this.getCompanies();
-    // this.businessModelDetails(1);
-    this.companyDetails(1);
+    setTimeout(()=>{ this.businessModelDetails(this.companyList[0].businessModelId) }, 100);
+    setTimeout(()=>{ this.companyDetails(this.companyList[0].companyId) }, 100);
   }
 
   getCompanies(): void {
-    this.amazaingManagementService.getAllCompanies().subscribe(result => {
+    this.amazaingManagementService.getCompaniesByPlayerId(1).subscribe(result => {
       this.companyList = result;
     }, error => {
       console.log(error);
     });
+
+    // this.amazaingManagementService.getAllCompanies().subscribe(result => {
+    //   this.companyList = result;
+    // }, error => {
+    //   console.log(error);
+    // });
   }
 
   companyDetails(id: number): void {
     this.amazaingManagementService.getCompanyById(id).subscribe(result => {
       this.company = result;
     });
-    this.amazaingManagementService.getBusinessModelById(id).subscribe(result => {
-      this.businessModel = result;
-    });
-    // this.businessModelDetails(this.company.businessModelId);
+    setTimeout(()=>{ this.businessModelDetails(this.company.businessModelId); }, 100);
   }
 
   createCompany(): void {
@@ -83,10 +86,16 @@ export class CompanyComponent implements OnInit {
     );
 
     this.amazaingManagementService.updateCompany(id, this.body(company));
+    setTimeout(()=>{ this.getCompanies(); }, 100);
+    setTimeout(()=>{ this.company = this.companyList[this.companyList.length - 1] }, 200 ); 
   }
 
   deleteCompany(id: number): void {
-    this.amazaingManagementService.deleteCompany(id);
+    if (this.companyList.length > 1) {
+      this.amazaingManagementService.deleteCompany(id);
+      setTimeout(()=>{ this.getCompanies(); }, 100);
+      setTimeout(()=>{ this.company = this.companyList[this.companyList.length - 1] }, 200 );
+    }
   }
 
   body(company: CompanyDTO): any {

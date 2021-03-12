@@ -8,6 +8,7 @@ import java.util.List;
 public interface ICompanyController {
 
 	List<Company> getAllCompanies();
+	public List<Company> getCompaniesByPlayerId(Long playerId);
 	Company getCompanyById(Long id);
 	Company storeCompany(CompanyDTO companyDTO);
 	void updateCompany(Long id, CompanyDTO companyDTO);

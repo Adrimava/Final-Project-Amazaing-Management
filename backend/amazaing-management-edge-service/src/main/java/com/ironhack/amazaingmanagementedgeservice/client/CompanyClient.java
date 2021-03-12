@@ -15,6 +15,10 @@ public interface CompanyClient {
 	@ResponseStatus(HttpStatus.OK)
 	public List<Company> getAllCompanies();
 
+	@GetMapping("/companies-by-player/{playerId}")
+	@ResponseStatus(HttpStatus.OK)
+	public List<Company> getCompaniesByPlayerId(@PathVariable Long playerId);
+
 	@GetMapping("/company/{id}")
 	@ResponseStatus(HttpStatus.OK)
 	public Company getCompanyById(@PathVariable Long id);

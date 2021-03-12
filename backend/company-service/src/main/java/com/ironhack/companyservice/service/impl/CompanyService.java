@@ -24,6 +24,11 @@ public class CompanyService implements ICompanyService {
 	}
 
 	@Override
+	public List<Company> getCompaniesByPlayerId(Long playerId) {
+		return companyRepository.findByPlayerId(playerId);
+	}
+
+	@Override
 	public Company getCompanyById(Long id) {
 		Optional<Company> company = companyRepository.findById(id);
 

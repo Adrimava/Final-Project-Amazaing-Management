@@ -62,6 +62,10 @@ export class AmazaingManagementService {
       return this.http.get<Company[]>('http://localhost:8080/companies');
     }
   
+    getCompaniesByPlayerId(id: number): Observable<Company[]> {
+      return this.http.get<Company[]>(`http://localhost:8080/companies-by-player/${id}`);
+    }
+
     getCompanyById(id: number): Observable<Company> {
       return this.http.get<Company>(`http://localhost:8080/company/${id}`);
     }

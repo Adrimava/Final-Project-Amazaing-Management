@@ -66,9 +66,11 @@ export class PlayerComponent implements OnInit {
   }
 
   deletePlayer(id: number): void {
-    this.amazaingManagementService.deletePlayer(id);
-    setTimeout(()=>{ this.getPlayers(); }, 100);
-    setTimeout(()=>{ this.player = this.playerList[this.playerList.length - 1] }, 200 ); 
+    if (this.playerList.length > 1) {
+      this.amazaingManagementService.deletePlayer(id);
+      setTimeout(()=>{ this.getPlayers(); }, 100);
+      setTimeout(()=>{ this.player = this.playerList[this.playerList.length - 1] }, 200 );
+    }
   }
 
   body(player: PlayerDTO): any {
