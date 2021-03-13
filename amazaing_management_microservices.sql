@@ -83,8 +83,8 @@ CREATE TABLE company(
 );
 
 INSERT INTO company(company_name, revenue, maintenance, employees_number, accident_risk_index, business_model_id, player_id) VALUES
-	('The Great Stand', 75, 25, 1, 25, 1, 1),
-    ('Lemon Party', 80, 35, 2, 40, 1, 1),
+	('The Great Stand', 75, 25, 2, 25, 1, 1),
+    ('Lemon Party', 80, 35, 1, 40, 1, 1),
     ('Sneed Feed and Seed', 90, 40, 1, 15, 2, 1),
     ('Just Khlav Kalash', 40, 10, 1, 5, 3, 2)
 ;
@@ -95,14 +95,6 @@ CREATE TABLE company_employees(
     PRIMARY KEY (employee_id),
     FOREIGN KEY (company_id) REFERENCES company(company_id)
 );
-
-INSERT INTO company_employees(employee_id, company_id) VALUES
-	(1, 1),
-    (2, 1),
-    (3, 2),
-    (4, 3),
-    (5, 4)
-;
 
 DROP SCHEMA IF EXISTS employee;
 CREATE SCHEMA employee;

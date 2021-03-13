@@ -40,6 +40,7 @@ export class PlayerComponent implements OnInit, OnChanges {
     this.player.money += this.moneyChanges;
     this.moneyChanges = 0;
     this.updatePlayer(this.player.playerId);
+    this.sendMoneyEvent.emit(this.player.money);
   }
 
   getPlayers(): void {
@@ -80,7 +81,6 @@ export class PlayerComponent implements OnInit, OnChanges {
     let player: PlayerDTO = new PlayerDTO(this.player.playerName, this.player.money, this.player.photo);
     this.amazaingManagementService.updatePlayer(id, this.body(player));
     setTimeout(()=>{ this.getPlayers(); }, 100);
-    setTimeout(()=>{ this.playerDetails(this.playerList[this.playerList.length - 1].playerId) }, 200 );
   }
 
   deletePlayer(id: number): void {
