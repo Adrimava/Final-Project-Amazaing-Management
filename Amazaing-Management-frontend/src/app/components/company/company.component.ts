@@ -53,6 +53,7 @@ export class CompanyComponent implements OnInit, OnChanges{
       this.businessModelDetails(this.company.businessModelId);
       this.getEmployeesByCompany(id);
     });
+    setTimeout(()=>{ this.company.employeesNumber = this.employeeList.length; }, 100);
   }
 
   createCompany(): void {

@@ -53,4 +53,14 @@ form * {
 .avatar {
     height: 100%;
 }
+
+.create-delete {
+    background-color: blue;
+    color: white;
+}
+
+button {
+    min-height: 50px;
+    border-radius: 5px;
+}
     

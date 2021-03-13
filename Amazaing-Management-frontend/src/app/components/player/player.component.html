@@ -14,7 +14,7 @@
             <option *ngFor="let player of playerList" (click)="playerDetails(player.playerId)">
                 {{ player.playerName }}
             </option>
-            <option (click)="showForm()">Create/Delete</option>
+            <option class="create-delete" (click)="showForm()">Create/Delete</option>
         </select>
     </div>
 </div>

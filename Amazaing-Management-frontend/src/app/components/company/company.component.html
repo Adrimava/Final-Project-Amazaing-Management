@@ -2,8 +2,14 @@
 	
 	<div class="companies">
 		<div *ngFor="let company of companyList; let i = index" class="company-card"
-				(click)="companyDetails(company.companyId)">			
-			<p>{{ company.companyName }}</p>
+				(click)="companyDetails(company.companyId)">
+			<div>
+				<p class="company-name">{{ company.companyName }}</p>
+			</div>	
+			<div>
+				<p>Weekly balance:</p>
+				<p class="balance">{{ company.revenue - company.maintenance }}</p>
+			</div>
 		</div>
 	</div>
 	
@@ -15,11 +21,16 @@
 			<p>Name: {{ company.companyName }}</p>
 			<p>Revenue: {{ company.revenue }}</p>
 			<p>Maintenance: {{ company.maintenance }}</p>
-			<p>employeesNumber: {{ company.employeesNumber }}</p> 
 			<p>Accident risk index: {{ company.accidentRiskIndex }}</p>
 			<p>Business model: {{ businessModel.modelName }}</p>
+			<p>employeesNumber: {{ company.employeesNumber }}</p> 	
 		</div>
-		<button>Sell {{ company.companyName }} </button>
+		<div class="employee-mini-avatar-container">
+			<div class="employee-mini-avatar" *ngFor="let employee of employeeList">
+				<img src="{{employee.photo}}" alt="">
+			</div>
+		</div>
+		<button>Sell {{ company.companyName }} ({{ businessModel.purchasePrice * 0.8 }}€)</button>
 	</div>
 
 	<h2>COMPANIES</h2>

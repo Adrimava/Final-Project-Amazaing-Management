@@ -1,6 +1,7 @@
 * {
     width: 90%;
     margin: 5px;
+    z-index: 1;
 }
 
 .container {
@@ -33,7 +34,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    background-color: rgb(245, 168, 168);
+    background-color: rgb(250, 200, 200);
     border: 3px white solid;
     padding: 10px;
     width: 200px;
@@ -47,6 +48,25 @@
     background-color: rgb(190, 119, 119);
 }
 
+.company-card div {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    margin: 10px auto;
+    height: 50px;
+    text-align: center;
+}
+
+.company-name {
+    font-size: 25px;
+    border-bottom: 2px white dashed;
+}
+
+.balance {
+    margin-top: 15px;
+    font-size: 25px;
+}
+
 .details {
     background-color: rgb(245, 168, 168);
     width: 300px;
@@ -58,6 +78,27 @@
     border-bottom-left-radius: 20px;
     margin: 0;
     margin-left: 10px;
+}
+
+.employee-mini-avatar-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.employee-mini-avatar {
+    width: 50px;
+    border: 3px white dotted;
+    border-radius: 100%;
+}
+
+.employee-mini-avatar:hover {
+    box-shadow: rgb(190, 119, 119) 5px 5px 10px;
+}
+
+.employee-mini-avatar:active:hover {
+    background-color: rgb(190, 119, 119);
 }
 
 h2 {
@@ -87,6 +128,9 @@ p {
     justify-content: center;
 }
 
+button {
+    min-height: 50px;
+}
 
 form {
     border: 1px black solid;
