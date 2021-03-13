@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output } from '@angular/core';
 import { CompanyDTO } from 'src/app/models/company-dto';
 import { AmazaingManagementService } from 'src/app/services/amazaing-management.service';
 import { BusinessModel, Company, Employee } from 'src/app/services/interfaces/database.interface';
@@ -28,6 +28,9 @@ export class CompanyComponent implements OnInit, OnChanges{
   employeeList: Employee[] = [];
   businessModelList: BusinessModel[] = [];
   selectedBusinessModel: BusinessModel;
+  notEnoughMoney: boolean = false;
+
+  @Output() sendMoneyChanges = new EventEmitter<number>();
 
   constructor(
     private amazaingManagementService: AmazaingManagementService
@@ -69,6 +72,7 @@ export class CompanyComponent implements OnInit, OnChanges{
 
   showPannel(): void {
     this.formIsVisible = !this.formIsVisible;
+    this.notEnoughMoney = false;
   }
 
   createFirstCompany(id: number): void {
@@ -87,24 +91,29 @@ export class CompanyComponent implements OnInit, OnChanges{
   }
 
   createCompany(): void {
-    let company: CompanyDTO = new CompanyDTO(
-      this.companyName,
-      this.revenue,
-      this.maintenance,
-      this.employeesNumber,
-      this.accidentRiskIndex,
-      this.selectedBusinessModel.modelId,
-      this.currentPlayer
-    );
-    
-    this.amazaingManagementService.storeCompany(this.body(company));
-    this.companyName = '';
-    this.revenue = 0;
-    this.maintenance = 0;
-    this.employeesNumber = 0;
-    this.accidentRiskIndex = 0;
-    setTimeout(()=>{ this.getCompanies(this.currentPlayer); }, 200);
-    this.formIsVisible = false;
+    if (this.money >= this.selectedBusinessModel.purchasePrice) {
+      this.notEnoughMoney = false;
+      this.sendMoneyChanges.emit(this.selectedBusinessModel.purchasePrice * -1);
+      let company: CompanyDTO = new CompanyDTO(
+        this.companyName,
+        this.revenue,
+        this.maintenance,
+        this.employeesNumber,
+        this.accidentRiskIndex,
+        this.selectedBusinessModel.modelId,
+        this.currentPlayer
+      );      
+      this.amazaingManagementService.storeCompany(this.body(company));
+      this.companyName = '';
+      this.revenue = 0;
+      this.maintenance = 0;
+      this.employeesNumber = 0;
+      this.accidentRiskIndex = 0;
+      setTimeout(()=>{ this.getCompanies(this.currentPlayer); }, 200);
+      this.formIsVisible = false;
+    } else {
+      this.notEnoughMoney = true;
+    }
   }
 
   updateCompany(id: number): void {

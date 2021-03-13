@@ -8,11 +8,13 @@
         <header>
             <app-player (sendPlayerEvent)="getCurrentPlayer($event)"
             (sendFirstCompanyEvent)="getFirstCompany($event)"
-            (sendMoneyEvent)="getMoney($event)"></app-player>
+            (sendMoneyEvent)="getMoney($event)"
+            [moneyChanges]="moneyChanges"></app-player>
         </header>
         
         <main>
-            <app-company [currentPlayer]="currentPlayer" [firstCompany]="firstCompany" [money]="money"></app-company>
+            <app-company (sendMoneyChanges)="getMoneyChanges($event)"
+                    [currentPlayer]="currentPlayer" [firstCompany]="firstCompany" [money]="money"></app-company>
             <app-employee [currentPlayer]="currentPlayer" [money]="money"></app-employee>
         </main>
     </div>

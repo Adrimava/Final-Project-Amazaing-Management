@@ -1,3 +1,4 @@
+<h1>{{money}}</h1>
 <div class="container">
 	
 	<div class="companies">
@@ -54,8 +55,9 @@
 					</option>
 				</select>
 				<p class="error-msg" *ngIf="inputBusinessModel.invalid && inputBusinessModel.touched">Missing Business Model</p>
-		
+				
 				<button type="submit" [disabled]="form.invalid">Buy company ({{ selectedBusinessModel.purchasePrice }}€)</button>
+				<p class="error-msg" *ngIf="notEnoughMoney">Not enough Money</p>
 				
 			</form>
 		</div>		
