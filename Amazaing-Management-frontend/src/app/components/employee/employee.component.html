@@ -2,13 +2,12 @@
 
 	<div class="appendix">
 		<h2>EMPLOYEES</h2>
-		<h2>{{currentPlayer}}</h2>
 
 		<div class="new-employee">
 			<img src="{{ photo }}{{ employeeName }}.svg" alt="">
 			<p>Employee name: {{ employeeName }}</p>
-			<p>Productivity: {{ productivity }}</p> 
-			<p>Clumsiness: {{ clumsiness }}</p>
+			<p>Productivity: {{ productivity }}%</p> 
+			<p>Clumsiness: {{ clumsiness }}%</p>
 			<button (click)="createEmployee()">Hire Employee (100€)</button>
 		</div>
 	</div>
@@ -21,8 +20,10 @@
 			<p>Employee name: {{ employee.employeeName }}</p>
 			<p>Productivity: {{ employee.productivity }}</p>
 			<p>Clumsiness: {{ employee.clumsiness }}</p>
-			<p>Working on: {{ company.companyName }}</p>
+			<p *ngIf="employee.companyId !== 0">Working on: {{ company.companyName }}</p>
+			<p *ngIf="employee.companyId === 0">Working on: Not Working</p>
 		</div>
+		<button (click)="deleteEmployee(employee.employeeId)">Fire {{ employee.employeeName }}</button>
 	</div>
 
 	<div class="employees">

@@ -60,7 +60,7 @@ export interface Company {
  * Employee interface
  */
 
-export interface Employee{
+export interface Employee {
     employeeId: number,
     employeeName: string,
     photo: string,
@@ -68,5 +68,20 @@ export interface Employee{
     clumsiness: number
     companyId: number,
     playerId: number
+}
+
+/**
+ * Random Name interface
+ */
+
+export interface RandomName {
+  results: [
+    {
+      name: {
+        first: string,
+        last: string
+      }
+    }
+  ]
 }
     

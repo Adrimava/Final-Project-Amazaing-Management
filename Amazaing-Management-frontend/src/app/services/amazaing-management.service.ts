@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { BusinessModel, Company, Employee, Player } from './interfaces/database.interface';
+import { BusinessModel, Company, Employee, Player, RandomName } from './interfaces/database.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -121,4 +121,14 @@ export class AmazaingManagementService {
     console.log(`Deleted employee with id ${id}`));
   }
 
+
+  /**
+   * Random name service
+   */
+  
+   getRandomName(): Observable<RandomName> {
+      return this.http.get<RandomName>('https://randomuser.me/api/');
+    }
+
 }
+

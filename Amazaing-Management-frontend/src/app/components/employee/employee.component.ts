@@ -53,8 +53,10 @@ export class EmployeeComponent implements OnInit, OnChanges {
   }
 
   randomValues(): void {
-    this.employeeName = 'Billy Bot';
-    this.photo = 'https://avatars.dicebear.com/api/bottts/' + this.employeeName + '.svg'
+    this.amazaingManagementService.getRandomName().subscribe(result => {
+      this.employeeName = result.results[0].name.first + ' ' + result.results[0].name.last;
+      this.photo = 'https://avatars.dicebear.com/api/bottts/' + this.employeeName + '.svg'
+    });
     this.productivity = this.randomNumber(100);
     this.clumsiness = this.randomNumber(50);
   }
