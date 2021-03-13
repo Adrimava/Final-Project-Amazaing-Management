@@ -19,8 +19,6 @@ export class CompanyComponent implements OnInit, OnChanges{
   maintenance: number = 0;
   employeesNumber: number = 0;
   accidentRiskIndex: number = 0;
-  businessModelId: number = 0;
-  playerId: number = 0;
   formIsVisible: boolean = false;
   businessModel: BusinessModel;
   employeeList: Employee[] = [];
@@ -77,8 +75,6 @@ export class CompanyComponent implements OnInit, OnChanges{
     this.maintenance = 0;
     this.employeesNumber = 0;
     this.accidentRiskIndex = 0;
-    this.businessModelId = 0;
-    this.playerId = 0;
     setTimeout(()=>{ this.getCompanies(this.currentPlayer); }, 100);
     alert("hola");
   }
@@ -90,8 +86,8 @@ export class CompanyComponent implements OnInit, OnChanges{
       this.maintenance,
       this.employeesNumber,
       this.accidentRiskIndex,
-      this.businessModelId,
-      this.playerId
+      this.selectedBusinessModel.modelId,
+      this.currentPlayer
     );
 
     this.amazaingManagementService.updateCompany(id, this.body(company));

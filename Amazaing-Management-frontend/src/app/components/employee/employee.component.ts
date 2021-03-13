@@ -15,11 +15,10 @@ export class EmployeeComponent implements OnInit, OnChanges {
   employeeList: Employee[] = [];
   employee: Employee = null;
   employeeName: string = '';
-  photo: string = 'Default picture';
+  photo: string = '';
   productivity: number = 0;
   clumsiness: number = 0;
   companyId: number = 0;
-  player: number = 0;
   formIsVisible: boolean = false;
   company: Company = null;
 
@@ -30,6 +29,7 @@ export class EmployeeComponent implements OnInit, OnChanges {
   ngOnInit(): void {
     this.getEmployeesByPlayer(this.currentPlayer);
     setTimeout(()=>{ this.employeeDetails(this.employeeList[0].employeeId) }, 100);
+    this.randomValues();
   }
 
   ngOnChanges(): void {
@@ -52,14 +52,26 @@ export class EmployeeComponent implements OnInit, OnChanges {
     setTimeout(()=>{ this.companyDetails(this.employee.companyId) }, 100);
   }
 
+  randomValues(): void {
+    this.employeeName = 'Billy Bot';
+    this.photo = 'https://avatars.dicebear.com/api/bottts/' + this.employeeName + '.svg'
+    this.productivity = this.randomNumber(100);
+    this.clumsiness = this.randomNumber(50);
+  }
+
+  randomNumber(max: number): number {
+    let num = max * Math.sin(Math.random() * (Math.PI / 2));
+    return Math.round(num);
+  }
+
   createEmployee(): void {
     let employee: EmployeeDTO = new EmployeeDTO(
       this.employeeName,
-      this.photo,
+      this.photo + this.employeeName +".svg",
       this.productivity,
       this.clumsiness,
       this.companyId,
-      this.player
+      this.currentPlayer
     );
 
     this.amazaingManagementService.storeEmployee(this.body(employee));
@@ -68,7 +80,6 @@ export class EmployeeComponent implements OnInit, OnChanges {
     this.productivity = 0;
     this.clumsiness = 0;
     this.companyId = 0;
-    this.player = 0;
     setTimeout(()=>{ this.getEmployeesByPlayer(this.currentPlayer); }, 100);
   }
 
@@ -79,7 +90,7 @@ export class EmployeeComponent implements OnInit, OnChanges {
       this.productivity,
       this.clumsiness,
       this.companyId,
-      this.player
+      this.currentPlayer
     );
 
     this.amazaingManagementService.updateEmployee(id, this.body(employee));

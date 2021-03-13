@@ -1,7 +1,16 @@
 <div class="container">
 
-	<div class="subtitle">
+	<div class="appendix">
 		<h2>EMPLOYEES</h2>
+		<h2>{{currentPlayer}}</h2>
+
+		<div class="new-employee">
+			<img src="{{ photo }}{{ employeeName }}.svg" alt="">
+			<p>Employee name: {{ employeeName }}</p>
+			<p>Productivity: {{ productivity }}</p> 
+			<p>Clumsiness: {{ clumsiness }}</p>
+			<button (click)="createEmployee()">Hire Employee (100€)</button>
+		</div>
 	</div>
 
 	<div class="details">
@@ -26,43 +35,14 @@
 
 </div>
 
-<div *ngIf="formIsVisible">
+<form (ngSubmit)="createEmployee()" #form="ngForm">
+		
+	<label for="company">company:</label><br>
+	<input type="number" ngModel required #inputCompany="ngModel" name="company"
+			[(ngModel)]="company"><br>
+	<p class="error-msg" *ngIf="inputCompany.invalid && inputCompany.touched">Missing company</p>
 
-        <div class="form">
-            <form (ngSubmit)="createEmployee()" #form="ngForm">
-        
-                <label for="employeeName">Employee Name:</label><br>
-                <input type="text" ngModel required #inputName="ngModel" name="employeeName" placeholder="Wall Street Puppy"
-                        [(ngModel)]="employeeName"><br>
-                <p class="error-msg" *ngIf="inputName.invalid && inputName.touched">Don't forget to write your name!</p>
-        
-                <label for="productivity">productivity:</label><br>
-                <input type="number" ngModel required #inputProductivity="ngModel" name="productivity"
-                        [(ngModel)]="productivity"><br>
-                <p class="error-msg" *ngIf="inputProductivity.invalid && inputProductivity.touched">Missing productivity</p>
-        
-                <label for="clumsiness">clumsiness:</label><br>
-                <input type="number" ngModel required #inputClumsiness="ngModel" name="clumsiness"
-                        [(ngModel)]="clumsiness"><br>
-                <p class="error-msg" *ngIf="inputClumsiness.invalid && inputClumsiness.touched">Missing clumsiness</p>
-        
-                <label for="company">company:</label><br>
-                <input type="number" ngModel required #inputCompany="ngModel" name="company"
-                        [(ngModel)]="company"><br>
-                <p class="error-msg" *ngIf="inputCompany.invalid && inputCompany.touched">Missing company</p>
-        
-                <label for="player">player:</label><br>
-                <input type="number" ngModel required #inputPlayer="ngModel" name="player"
-                        [(ngModel)]="player"><br>
-                <p class="error-msg" *ngIf="inputPlayer.invalid && inputPlayer.touched">Missing player</p>
-        
-                <button type="submit" [disabled]="form.invalid">Create Employee</button>
-                
-            </form>
-        </div>
-        
-        <button (click)="updateEmployee(1)">Update Employee 1</button>
-        
-        <button (click)="deleteEmployee(3)">Delete employee 3</button>
+	<button type="submit" [disabled]="form.invalid">Create Employee</button>
+	
+</form>
 
-</div>

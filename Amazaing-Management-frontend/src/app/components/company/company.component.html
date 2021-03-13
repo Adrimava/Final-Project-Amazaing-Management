@@ -8,7 +8,7 @@
 			</div>	
 			<div>
 				<p>Weekly balance:</p>
-				<p class="balance">{{ company.revenue - company.maintenance }}</p>
+				<p class="balance">{{ company.revenue - company.maintenance }}€</p>
 			</div>
 		</div>
 	</div>
@@ -19,9 +19,9 @@
 		</div>
 		<div>
 			<p>Name: {{ company.companyName }}</p>
-			<p>Revenue: {{ company.revenue }}</p>
-			<p>Maintenance: {{ company.maintenance }}</p>
-			<p>Accident risk index: {{ company.accidentRiskIndex }}</p>
+			<p>Revenue: {{ company.revenue }}€</p>
+			<p>Maintenance: {{ company.maintenance }}€</p>
+			<p>Accident risk index: {{ company.accidentRiskIndex }}%</p>
 			<p>Business model: {{ businessModel.modelName }}</p>
 			<p>employeesNumber: {{ company.employeesNumber }}</p> 	
 		</div>
@@ -30,7 +30,7 @@
 				<img src="{{employee.photo}}" alt="">
 			</div>
 		</div>
-		<button>Sell {{ company.companyName }} ({{ businessModel.purchasePrice * 0.8 }}€)</button>
+		<button (click)="deleteCompany(company.companyId)">Sell {{ company.companyName }} ({{ businessModel.purchasePrice * 0.8 }}€)</button>
 	</div>
 
 	<div class="appendix">

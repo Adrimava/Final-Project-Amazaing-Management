@@ -64,25 +64,40 @@
     margin-right: 10px;
 }
 
-.subtitle {
+.appendix {
+    display: flex;
+    justify-content: flex-end;
     width: 200px;
     position: relative;
-    margin-bottom: 0;
-    margin-right: 12px;
+    margin: 0;
 }
 
-.subtitle h2 {
+.appendix h2 {
+    justify-self: flex-end;
+    margin: 0;
+    padding: 5px;
+    padding-right: 15px;
     height: 40px;
-    margin-bottom: 0;    
     position: absolute;
     bottom: 0;
-    padding-right: 25px;
-    padding-top: 5px;
     text-align: right;
     background-color: rgb(124, 174, 248);
     border-top:  3px rgb(27, 88, 179) solid;
     border-left:  3px rgb(27, 88, 179) solid;
     border-top-left-radius: 20px;
+}
+
+.new-employee {
+    width: 200px;
+    height: 250px;
+    border-top: 1px black solid;
+    border-left: 1px black solid;
+    margin: 0;
+    padding: 10px;
+}
+
+.new-employee img {
+    height: 50px;
 }
 
 .avatar-container {
@@ -99,6 +114,10 @@ p {
     margin: auto;
     justify-content: center;
     padding-bottom: 10px;
+}
+
+button {
+    min-height: 30px;
 }
 
 form {
