@@ -14,6 +14,8 @@ export class CompanyComponent implements OnInit, OnChanges{
   currentPlayer: number = 1;
   @Input()
   firstCompany: number = 1;
+  @Input()
+  money: number = 1000;
   companyList: Company[] = [];
   company: Company = null;
   companyName: string = '';

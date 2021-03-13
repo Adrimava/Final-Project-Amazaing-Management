@@ -9,6 +9,7 @@ export class GameBoardComponent implements OnInit {
 
   currentPlayer: number = 1;
   firstCompany: number = 1;
+  money: number = 1000;
 
   getCurrentPlayer($event: number) {
     this.currentPlayer = $event;
@@ -16,6 +17,10 @@ export class GameBoardComponent implements OnInit {
 
   getFirstCompany($event: number) {
     this.firstCompany = $event;
+  }
+
+  getMoney($event: number) {
+    this.money = $event;
   }
 
   constructor() { }

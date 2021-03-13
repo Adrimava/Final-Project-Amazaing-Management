@@ -22,6 +22,7 @@ export class PlayerComponent implements OnInit {
 
   @Output() sendPlayerEvent = new EventEmitter<number>();
   @Output() sendFirstCompanyEvent = new EventEmitter<number>();
+  @Output() sendMoneyEvent = new EventEmitter<number>();
 
   constructor(
     private amazaingManagementService: AmazaingManagementService
@@ -43,8 +44,9 @@ export class PlayerComponent implements OnInit {
   playerDetails(id: number): void {
     this.amazaingManagementService.getPlayerById(id).subscribe(result => {
       this.player = result;
-      this.sendFirstCompanyEvent.emit(this.firstCompany);
+      // this.sendFirstCompanyEvent.emit(this.firstCompany);
       this.sendPlayerEvent.emit(this.player.playerId);
+      // this.sendMoneyEvent.emit(this.player.money);
     });
   }
 
