@@ -43,8 +43,16 @@
         <input type="radio" name="gender" id="female" value="female" [(ngModel)]="playerPhoto">
         <label for="female">Female</label>
 
+        <p>First sales:</p>
+        <input type="radio" name="firstCompany" id="lemonade" value=1 checked [(ngModel)]="firstCompany">
+        <label for="lemonade">Lemonade</label>
+        <input type="radio" name="firstCompany" id="sweets" value=2 [(ngModel)]="firstCompany">
+        <label for="sweets">Sweets</label>
+        <input type="radio" name="firstCompany" id="khlav" value=3 [(ngModel)]="firstCompany">
+        <label for="khlav">Khlav</label>
+
         <br>
-        <button type="submit" [disabled]="form.invalid">Create Player</button>        
+        <button type="submit" [disabled]="form.invalid">Create Player</button>
     </form>
 
     <div>

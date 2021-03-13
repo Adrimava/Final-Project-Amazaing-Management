@@ -12,6 +12,8 @@ export class CompanyComponent implements OnInit, OnChanges{
 
   @Input()
   currentPlayer: number = 1;
+  @Input()
+  firstCompany: number = 1;
   companyList: Company[] = [];
   company: Company = null;
   companyName: string = '';
@@ -35,6 +37,11 @@ export class CompanyComponent implements OnInit, OnChanges{
     setTimeout(()=>{ this.companyDetails(this.companyList[0].companyId) }, 100);
     this.getBusinessModels();
     setTimeout(()=>{ this.selectBusinessModelDetails(this.businessModelList[0].modelId) }, 100);
+    setTimeout(()=>{
+      if (this.companyList.length === 0) {
+        this.createFirstCompany(this.firstCompany);
+      }
+    }, 200);
   }
 
   ngOnChanges(): void {
@@ -60,6 +67,21 @@ export class CompanyComponent implements OnInit, OnChanges{
 
   showPannel(): void {
     this.formIsVisible = !this.formIsVisible;
+  }
+
+  createFirstCompany(id: number): void {
+    let company: CompanyDTO = new CompanyDTO(
+      "My first Company",
+      this.revenue,
+      this.maintenance,
+      this.employeesNumber,
+      this.accidentRiskIndex,
+      id,
+      this.currentPlayer
+    );
+    
+    this.amazaingManagementService.storeCompany(this.body(company));
+    setTimeout(()=>{ this.getCompanies(this.currentPlayer); }, 200);
   }
 
   createCompany(): void {

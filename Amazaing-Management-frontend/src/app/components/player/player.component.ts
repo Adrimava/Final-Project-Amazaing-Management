@@ -18,8 +18,10 @@ export class PlayerComponent implements OnInit {
   formIsVisible: boolean = false;
   difficulty: string = 'easy'
   gender: string = 'human';
+  firstCompany: number = 1;
 
   @Output() sendPlayerEvent = new EventEmitter<number>();
+  @Output() sendFirstCompanyEvent = new EventEmitter<number>();
 
   constructor(
     private amazaingManagementService: AmazaingManagementService
@@ -41,6 +43,7 @@ export class PlayerComponent implements OnInit {
   playerDetails(id: number): void {
     this.amazaingManagementService.getPlayerById(id).subscribe(result => {
       this.player = result;
+      this.sendFirstCompanyEvent.emit(this.firstCompany);
       this.sendPlayerEvent.emit(this.player.playerId);
     });
   }
@@ -59,6 +62,7 @@ export class PlayerComponent implements OnInit {
     setTimeout(()=>{ this.getPlayers(); }, 100);
     setTimeout(()=> {this.player = this.playerList[this.playerList.length - 1] }, 200 );  
     this.showForm();
+    setTimeout(() => { this.playerDetails(this.player.playerId); }, 200);
   }
 
   updatePlayer(id: number): void {

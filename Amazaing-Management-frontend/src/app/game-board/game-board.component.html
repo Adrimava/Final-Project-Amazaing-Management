@@ -6,11 +6,12 @@
     
     <div class="center">
         <header>
-            <app-player (sendPlayerEvent)="getCurrentPlayer($event)"></app-player>
+            <app-player (sendPlayerEvent)="getCurrentPlayer($event)"
+            (sendFirstCompanyEvent)="getFirstCompany($event)"></app-player>
         </header>
         
         <main>
-            <app-company [currentPlayer]="currentPlayer"></app-company>
+            <app-company [currentPlayer]="currentPlayer" [firstCompany]="firstCompany"></app-company>
             <app-employee [currentPlayer]="currentPlayer"></app-employee>
         </main>
     </div>

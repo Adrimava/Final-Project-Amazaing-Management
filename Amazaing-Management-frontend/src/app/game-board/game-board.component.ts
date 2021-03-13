@@ -8,9 +8,14 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 export class GameBoardComponent implements OnInit {
 
   currentPlayer: number = 1;
+  firstCompany: number = 1;
 
   getCurrentPlayer($event: number) {
     this.currentPlayer = $event;
+  }
+
+  getFirstCompany($event: number) {
+    this.firstCompany = $event;
   }
 
   constructor() { }
