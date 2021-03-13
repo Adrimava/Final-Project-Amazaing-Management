@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnInit } from '@angular/core';
 import { EmployeeDTO } from 'src/app/models/employee-dto';
 import { AmazaingManagementService } from 'src/app/services/amazaing-management.service';
 import { Company, Employee } from 'src/app/services/interfaces/database.interface';
@@ -8,7 +8,7 @@ import { Company, Employee } from 'src/app/services/interfaces/database.interfac
   templateUrl: './employee.component.html',
   styleUrls: ['./employee.component.css']
 })
-export class EmployeeComponent implements OnInit {
+export class EmployeeComponent implements OnInit, OnChanges {
 
   @Input()
   currentPlayer: number = 1;
@@ -28,12 +28,16 @@ export class EmployeeComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.getEmployees();
+    this.getEmployeesByPlayer(this.currentPlayer);
     setTimeout(()=>{ this.employeeDetails(this.employeeList[0].employeeId) }, 100);
   }
 
-  getEmployees(): void {
-    this.amazaingManagementService.getAllEmployees().subscribe(result => {
+  ngOnChanges(): void {
+    this.ngOnInit();
+  }
+
+  getEmployeesByPlayer(id: number): void {
+    this.amazaingManagementService.getEmployeesByPlayerId(id).subscribe(result => {
       this.employeeList = result;
     }, error => {
       console.log(error);
@@ -44,7 +48,8 @@ export class EmployeeComponent implements OnInit {
     this.amazaingManagementService.getEmployeeById(id).subscribe(result => {
       this.employee = result;
     });
-    setTimeout(()=>{ this.getEmployees() }, 100);
+    setTimeout(()=>{ this.getEmployeesByPlayer(this.currentPlayer) }, 100);
+    setTimeout(()=>{ this.companyDetails(this.employee.companyId) }, 100);
   }
 
   createEmployee(): void {
@@ -64,7 +69,7 @@ export class EmployeeComponent implements OnInit {
     this.clumsiness = 0;
     this.companyId = 0;
     this.player = 0;
-    setTimeout(()=>{ this.getEmployees(); }, 100);
+    setTimeout(()=>{ this.getEmployeesByPlayer(this.currentPlayer); }, 100);
   }
 
   updateEmployee(id: number): void {
@@ -78,14 +83,14 @@ export class EmployeeComponent implements OnInit {
     );
 
     this.amazaingManagementService.updateEmployee(id, this.body(employee));
-    setTimeout(()=>{ this.getEmployees(); }, 100);
+    setTimeout(()=>{ this.getEmployeesByPlayer(this.currentPlayer); }, 100);
     setTimeout(()=>{ this.employee = this.employeeList[this.employeeList.length - 1] }, 200 );
   }
 
   deleteEmployee(id: number): void {
     if (this.employeeList.length > 1) {
       this.amazaingManagementService.deleteEmployee(id);
-      setTimeout(()=>{ this.getEmployees(); }, 100);
+      setTimeout(()=>{ this.getEmployeesByPlayer(this.currentPlayer); }, 100);
       setTimeout(()=>{ this.employee = this.employeeList[this.employeeList.length - 1] }, 200 );
     }
   }

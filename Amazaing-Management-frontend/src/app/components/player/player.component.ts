@@ -43,7 +43,6 @@ export class PlayerComponent implements OnInit {
       this.player = result;
       this.sendPlayerEvent.emit(this.player.playerId);
     });
-    // setTimeout(()=>{ this.sendPlayerEvent.emit(this.player.playerId); }, 100);
   }
 
   createPlayer(): void {    
@@ -66,14 +65,14 @@ export class PlayerComponent implements OnInit {
     let player: PlayerDTO = new PlayerDTO(this.playerName, this.money, this.playerPhoto);
     this.amazaingManagementService.updatePlayer(id, this.body(player));
     setTimeout(()=>{ this.getPlayers(); }, 100);
-    setTimeout(()=>{ this.player = this.playerList[this.playerList.length - 1] }, 200 ); 
+    setTimeout(()=>{ this.playerDetails(this.playerList[this.playerList.length - 1].playerId) }, 200 );
   }
 
   deletePlayer(id: number): void {
     if (this.playerList.length > 1) {
       this.amazaingManagementService.deletePlayer(id);
       setTimeout(()=>{ this.getPlayers(); }, 100);
-      setTimeout(()=>{ this.player = this.playerList[this.playerList.length - 1] }, 200 );
+      setTimeout(()=>{ this.playerDetails(this.playerList[this.playerList.length - 1].playerId) }, 200 );
     }
   }
 

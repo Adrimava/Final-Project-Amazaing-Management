@@ -94,6 +94,14 @@ export class AmazaingManagementService {
     return this.http.get<Employee[]>('http://localhost:8080/employees');
   }
 
+  getEmployeesByPlayerId(id: number): Observable<Employee[]> {
+    return this.http.get<Employee[]>(`http://localhost:8080/employees-by-player/${id}`);
+  }
+
+  getEmployeesByCompanyId(id: number): Observable<Employee[]> {
+    return this.http.get<Employee[]>(`http://localhost:8080/employees-by-company/${id}`);
+  }
+
   getEmployeeById(id: number): Observable<Employee> {
     return this.http.get<Employee>(`http://localhost:8080/employee/${id}`);
   }

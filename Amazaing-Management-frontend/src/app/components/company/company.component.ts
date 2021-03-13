@@ -1,7 +1,7 @@
 import { Component, Input, OnChanges, OnInit } from '@angular/core';
 import { CompanyDTO } from 'src/app/models/company-dto';
 import { AmazaingManagementService } from 'src/app/services/amazaing-management.service';
-import { BusinessModel, Company } from 'src/app/services/interfaces/database.interface';
+import { BusinessModel, Company, Employee } from 'src/app/services/interfaces/database.interface';
 
 @Component({
   selector: 'app-company',
@@ -23,6 +23,7 @@ export class CompanyComponent implements OnInit, OnChanges{
   playerId: number = 0;
   formIsVisible: boolean = false;
   businessModel: BusinessModel;
+  employeeList: Employee[] = [];
 
   constructor(
     private amazaingManagementService: AmazaingManagementService
@@ -49,9 +50,9 @@ export class CompanyComponent implements OnInit, OnChanges{
   companyDetails(id: number): void {
     this.amazaingManagementService.getCompanyById(id).subscribe(result => {
       this.company = result;
+      this.businessModelDetails(this.company.businessModelId);
+      this.getEmployeesByCompany(id);
     });
-    setTimeout(()=>{ this.businessModelDetails(this.company.businessModelId); }, 100);
-    setTimeout(()=>{ this.getCompanies(this.currentPlayer); }, 100);
   }
 
   createCompany(): void {
@@ -116,6 +117,14 @@ export class CompanyComponent implements OnInit, OnChanges{
   businessModelDetails(id: number): void {
     this.amazaingManagementService.getBusinessModelById(id).subscribe(result => {
       this.businessModel = result;
+    });
+  }
+
+  getEmployeesByCompany(id: number): void {
+    this.amazaingManagementService.getEmployeesByCompanyId(id).subscribe(result => {
+      this.employeeList = result;
+    }, error => {
+      console.log(error);
     });
   }
 
