@@ -29,7 +29,6 @@ export class EmployeeComponent implements OnInit, OnChanges {
   ngOnInit(): void {
     this.getEmployeesByPlayer(this.currentPlayer);
     setTimeout(()=>{ this.employeeDetails(this.employeeList[0].employeeId) }, 100);
-    this.randomValues();
   }
 
   ngOnChanges(): void {
@@ -50,6 +49,11 @@ export class EmployeeComponent implements OnInit, OnChanges {
     });
     setTimeout(()=>{ this.getEmployeesByPlayer(this.currentPlayer) }, 100);
     setTimeout(()=>{ this.companyDetails(this.employee.companyId) }, 100);
+  }
+
+  showPannel(): void {
+    this.randomValues();
+    this.formIsVisible = true;
   }
 
   randomValues(): void {
@@ -80,6 +84,7 @@ export class EmployeeComponent implements OnInit, OnChanges {
     this.randomValues();
     this.companyId = 0;
     setTimeout(()=>{ this.getEmployeesByPlayer(this.currentPlayer); }, 100);
+    this.formIsVisible = false;
   }
 
   updateEmployee(id: number): void {

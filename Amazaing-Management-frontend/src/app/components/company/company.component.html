@@ -22,8 +22,8 @@
 			<p>Revenue: {{ company.revenue }}€</p>
 			<p>Maintenance: {{ company.maintenance }}€</p>
 			<p>Accident risk index: {{ company.accidentRiskIndex }}%</p>
-			<p>Business model: {{ businessModel.modelName }}</p>
-			<p>employeesNumber: {{ company.employeesNumber }}</p> 	
+			<p>Business: {{ businessModel.modelName }}</p>
+			<p>Number of employees: {{ company.employeesNumber }}</p> 	
 		</div>
 		<div class="employee-mini-avatar-container">
 			<div class="employee-mini-avatar" *ngFor="let employee of employeeList">
@@ -35,8 +35,10 @@
 
 	<div class="appendix">
 		<h2>COMPANIES</h2>
-		
-		<div class="form" >
+		<button *ngIf="!formIsVisible" class="show-pannel" (click)="showPannel()">Buy new Company</button>
+		<button *ngIf="formIsVisible" class="close-pannel" (click)="showPannel()">Close</button>
+
+		<div class="form" *ngIf="formIsVisible">
 			<form (ngSubmit)="createCompany()" #form="ngForm">
 		
 				<label for="companyName">Company Name:</label><br>

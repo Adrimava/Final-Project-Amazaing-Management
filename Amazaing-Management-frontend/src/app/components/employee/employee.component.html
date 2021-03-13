@@ -1,12 +1,13 @@
 <div class="container">
 
 	<div class="appendix">
+		<button *ngIf="!formIsVisible" class="show-pannel" (click)="showPannel()">New Employee available!</button>
 		<h2>EMPLOYEES</h2>
 
-		<div class="new-employee">
+		<div *ngIf="formIsVisible" class="new-employee">
 			<p>New Employee available!</p>
 			<img src="{{ photo }}{{ employeeName }}.svg" alt="">
-			<p>Employee name: {{ employeeName }}</p>
+			<p>Name: {{ employeeName }}</p>
 			<p>Productivity: {{ productivity }}%</p> 
 			<p>Clumsiness: {{ clumsiness }}%</p>
 			<button (click)="createEmployee()">Hire Employee (100€)</button>

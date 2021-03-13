@@ -109,13 +109,25 @@
 h2 {
     width: 200px;
     height: 40px;
-    margin-left: 0;
-    margin-top: 0;
+    margin: 0;
     padding-left: 25px;
     background-color: rgb(245, 168, 168);
     border-bottom:  3px rgb(190, 119, 119) solid;
     border-right:  3px rgb(190, 119, 119) solid;
     border-bottom-right-radius: 20px;
+}
+
+.show-pannel {
+    margin: 0;
+    margin-top: -1px;
+    margin-left: -1px;
+}
+
+.close-pannel {
+    margin: 0;
+    margin-top: -1px;
+    margin-left: -1px;
+    max-height: 10px;
 }
 
 .avatar-container {

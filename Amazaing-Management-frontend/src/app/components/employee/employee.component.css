@@ -66,6 +66,7 @@
 
 .appendix {
     display: flex;
+    flex-direction: column;
     justify-content: flex-end;
     width: 200px;
     position: relative;
@@ -87,14 +88,23 @@
     border-top-left-radius: 20px;
 }
 
+.show-pannel {
+    position: relative;
+    bottom: 50px;
+    margin: 0;
+    width: 90%;
+    margin-left: 21px;
+}
+
 .new-employee {
     width: 200px;
-    height: 250px;
     border-top: 1px black solid;
     border-left: 1px black solid;
     margin: 0;
-    padding: 10px;
     text-align: center;
+    position: relative;
+    padding: 10px 0;
+    bottom: 50px;
 }
 
 .new-employee img {

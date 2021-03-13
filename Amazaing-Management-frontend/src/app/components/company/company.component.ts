@@ -58,6 +58,10 @@ export class CompanyComponent implements OnInit, OnChanges{
     setTimeout(()=>{ this.company.employeesNumber = this.employeeList.length; }, 100);
   }
 
+  showPannel(): void {
+    this.formIsVisible = !this.formIsVisible;
+  }
+
   createCompany(): void {
     let company: CompanyDTO = new CompanyDTO(
       this.companyName,
@@ -76,6 +80,7 @@ export class CompanyComponent implements OnInit, OnChanges{
     this.employeesNumber = 0;
     this.accidentRiskIndex = 0;
     setTimeout(()=>{ this.getCompanies(this.currentPlayer); }, 200);
+    this.formIsVisible = false;
   }
 
   updateCompany(id: number): void {
