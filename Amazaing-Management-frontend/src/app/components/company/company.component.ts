@@ -76,7 +76,6 @@ export class CompanyComponent implements OnInit, OnChanges{
     this.employeesNumber = 0;
     this.accidentRiskIndex = 0;
     setTimeout(()=>{ this.getCompanies(this.currentPlayer); }, 100);
-    alert("hola");
   }
 
   updateCompany(id: number): void {

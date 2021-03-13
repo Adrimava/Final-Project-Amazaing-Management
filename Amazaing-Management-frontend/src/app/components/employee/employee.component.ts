@@ -75,10 +75,7 @@ export class EmployeeComponent implements OnInit, OnChanges {
     );
 
     this.amazaingManagementService.storeEmployee(this.body(employee));
-    this.employeeName = '';
-    this.photo = '';
-    this.productivity = 0;
-    this.clumsiness = 0;
+    this.randomValues();
     this.companyId = 0;
     setTimeout(()=>{ this.getEmployeesByPlayer(this.currentPlayer); }, 100);
   }
@@ -112,7 +109,7 @@ export class EmployeeComponent implements OnInit, OnChanges {
       photo: employee.photo,
       productivity: employee.productivity,
       clumsiness: employee.clumsiness,
-      companyId: employee.companyId,
+      company: employee.companyId,
       player: employee.playerId
     }
     return employeeBody;
