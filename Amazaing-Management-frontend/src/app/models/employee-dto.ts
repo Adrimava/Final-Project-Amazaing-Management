@@ -5,21 +5,21 @@ export class EmployeeDTO {
         private _photo: string,
         private _productivity: number,
         private _clumsiness: number,
-        private _company: number,
-        private _player: number
+        private _companyId: number,
+        private _playerId: number
     ) { }
 
-    public get player(): number {
-        return this._player;
+    public get playerId(): number {
+        return this._playerId;
     }
-    public set player(value: number) {
-        this._player = value;
+    public set playerId(value: number) {
+        this._playerId = value;
     }
-    public get company(): number {
-        return this._company;
+    public get companyId(): number {
+        return this._companyId;
     }
-    public set company(value: number) {
-        this._company = value;
+    public set companyId(value: number) {
+        this._companyId = value;
     }
     public get clumsiness(): number {
         return this._clumsiness;

@@ -14,10 +14,10 @@ CREATE TABLE business_model(
     PRIMARY KEY(model_id)
 );
 
-INSERT INTO business_model(model_id, model_name, purchase_price, max_employees, average_revenue, daily_costs, employee_salary) VALUES
-	(1, 'Lemonade Stand', 600, 2, 100, 10, 20),
-    (2, 'Kiosk', 1000, 1, 100, 40, 30),
-    (3, 'Khlav Kalash Cart', 450, 1, 50, 10, 20)
+INSERT INTO business_model(model_id, model_name, photo, purchase_price, max_employees, average_revenue, daily_costs, employee_salary) VALUES
+	(1, 'Lemonade Stand', 'https://avatars.dicebear.com/api/identicon/Lemonade Stand.svg', 600, 2, 100, 10, 20),
+    (2, 'Kiosk', 'https://avatars.dicebear.com/api/identicon/Kiosk.svg', 1000, 1, 100, 40, 30),
+    (3, 'Khlav Kalash Cart', 'https://avatars.dicebear.com/api/identicon/Khlav Kalash Cart.svg', 450, 1, 50, 10, 20)
 ;
 
 DROP SCHEMA IF EXISTS player;
@@ -120,9 +120,9 @@ CREATE TABLE employee(
 );
 
 INSERT INTO employee(employee_name, photo, productivity, clumsiness, company_id, player_id) VALUES
-	('Sara Penguin', 'noPhoto', 60, 15, 1, 1),
-    ('Celia Penguin', 'noPhoto', 50, 10, 1, 1),
-    ('Lemoncio Sour', 'noPhoto', 35, 20, 2, 1),
-    ('Sneed Fisher', 'noPhoto', 40, 19, 3, 1),
-    ('Khlav Kalash Guy', 'noPhoto', 95, 34, 4, 2)
+	('Sara Penguin', 'https://avatars.dicebear.com/api/bottts/Sara Penguin.svg', 60, 15, 1, 1),
+    ('Celia Penguin', 'https://avatars.dicebear.com/api/bottts/Celia Penguin.svg', 50, 10, 1, 1),
+    ('Lemoncio Sour', 'https://avatars.dicebear.com/api/bottts/Lemoncio Sour.svg', 35, 20, 2, 1),
+    ('Sneed Fisher', 'https://avatars.dicebear.com/api/bottts/Sneed Fisher.svg', 40, 19, 3, 1),
+    ('Khlav Kalash Guy', 'https://avatars.dicebear.com/api/bottts/Khlav Kalash Guy.svg', 95, 34, 4, 2)
 ;

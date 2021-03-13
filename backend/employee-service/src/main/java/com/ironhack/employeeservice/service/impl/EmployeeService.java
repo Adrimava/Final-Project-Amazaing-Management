@@ -24,6 +24,16 @@ public class EmployeeService implements IEmployeeService {
 	}
 
 	@Override
+	public List<Employee> getEmployeesByPlayerId(Long playerId) {
+		return employeeRepository.findByPlayerId(playerId);
+	}
+
+	@Override
+	public List<Employee> getEmployeesByCompanyId(Long companyId) {
+		return employeeRepository.findByCompanyId(companyId);
+	}
+
+	@Override
 	public Employee getEmployeeById(Long id) {
 		Optional<Employee> employee = employeeRepository.findById(id);
 

@@ -10,10 +10,6 @@ public class Player {
 	private String playerName;
 	private BigDecimal money;
 	private String photo;
-//	@OneToMany(mappedBy = "player")
-	private List<Company> companies;
-//	@OneToMany(mappedBy = "player")
-	private List<Employee> employees;
 
 	public Player() {
 	}
@@ -56,19 +52,4 @@ public class Player {
 		this.photo = photo;
 	}
 
-	public List<Company> getCompanies() {
-		return companies;
-	}
-
-	public void setCompanies(List<Company> companies) {
-		this.companies = companies;
-	}
-
-	public List<Employee> getEmployees() {
-		return employees;
-	}
-
-	public void setEmployees(List<Employee> employees) {
-		this.employees = employees;
-	}
 }

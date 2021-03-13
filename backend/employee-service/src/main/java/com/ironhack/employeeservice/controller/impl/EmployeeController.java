@@ -23,6 +23,18 @@ public class EmployeeController implements IEmployeeController {
 		return employeeService.getAllEmployees();
 	}
 
+	@GetMapping("/employees-by-player/{playerId}")
+	@ResponseStatus(HttpStatus.OK)
+	public List<Employee> getEmployeesByPlayerId(@PathVariable Long playerId) {
+		return employeeService.getEmployeesByPlayerId(playerId);
+	}
+
+	@GetMapping("/employees-by-company/{companyId}")
+	@ResponseStatus(HttpStatus.OK)
+	public List<Employee> getEmployeesByCompanyId(@PathVariable Long companyId) {
+		return employeeService.getEmployeesByCompanyId(companyId);
+	}
+
 	@GetMapping("/employee/{id}")
 	@ResponseStatus(HttpStatus.OK)
 	public Employee getEmployeeById(@PathVariable Long id) {

@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnInit } from '@angular/core';
 import { CompanyDTO } from 'src/app/models/company-dto';
 import { AmazaingManagementService } from 'src/app/services/amazaing-management.service';
 import { BusinessModel, Company } from 'src/app/services/interfaces/database.interface';
@@ -8,7 +8,7 @@ import { BusinessModel, Company } from 'src/app/services/interfaces/database.int
   templateUrl: './company.component.html',
   styleUrls: ['./company.component.css']
 })
-export class CompanyComponent implements OnInit {
+export class CompanyComponent implements OnInit, OnChanges{
 
   @Input()
   currentPlayer: number = 1;
@@ -32,6 +32,10 @@ export class CompanyComponent implements OnInit {
     this.getCompanies(this.currentPlayer);
     setTimeout(()=>{ this.businessModelDetails(this.companyList[0].businessModelId) }, 100);
     setTimeout(()=>{ this.companyDetails(this.companyList[0].companyId) }, 100);
+  }
+
+  ngOnChanges(): void {
+    this.ngOnInit();
   }
 
   getCompanies(id: number): void {
@@ -69,6 +73,7 @@ export class CompanyComponent implements OnInit {
     this.accidentRiskIndex = 0;
     this.businessModelId = 0;
     this.playerId = 0;
+    setTimeout(()=>{ this.getCompanies(this.currentPlayer); }, 100);
   }
 
   updateCompany(id: number): void {

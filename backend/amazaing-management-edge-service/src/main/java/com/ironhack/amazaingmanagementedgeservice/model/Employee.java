@@ -1,8 +1,9 @@
 package com.ironhack.amazaingmanagementedgeservice.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import java.math.BigDecimal;
 
 public class Employee {
@@ -11,26 +12,19 @@ public class Employee {
 	private String photo;
 	private BigDecimal productivity;
 	private BigDecimal clumsiness;
-//	@JsonIgnore
-//	@ManyToOne
-//	@JoinColumn(name = "company_id")
-//	private Company company;
-//	@JsonIgnore
-//	@ManyToOne
-//	@JoinColumn(name = "player_id")
-	private Player player;
+	private Long companyId;
+	private Long playerId;
 
 	public Employee() {
 	}
 
-	public Employee(String employeeName, String photo, BigDecimal productivity,
-					BigDecimal clumsiness, Company company, Player player) {
+	public Employee(String employeeName, String photo, BigDecimal productivity, BigDecimal clumsiness, Long companyId, Long playerId) {
 		this.employeeName = employeeName;
 		this.photo = photo;
 		this.productivity = productivity;
 		this.clumsiness = clumsiness;
-//		this.company = company;
-		this.player = player;
+		this.companyId = companyId;
+		this.playerId = playerId;
 	}
 
 	public Long getEmployeeId() {
@@ -73,19 +67,20 @@ public class Employee {
 		this.clumsiness = clumsiness;
 	}
 
-//	public Company getCompany() {
-//		return company;
-//	}
-//
-//	public void setCompany(Company company) {
-//		this.company = company;
-//	}
-
-	public Player getPlayer() {
-		return player;
+	public Long getCompanyId() {
+		return companyId;
 	}
 
-	public void setPlayer(Player player) {
-		this.player = player;
+	public void setCompanyId(Long companyId) {
+		this.companyId = companyId;
 	}
+
+	public Long getPlayerId() {
+		return playerId;
+	}
+
+	public void setPlayerId(Long playerId) {
+		this.playerId = playerId;
+	}
+
 }

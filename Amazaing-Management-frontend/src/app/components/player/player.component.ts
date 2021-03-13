@@ -41,8 +41,9 @@ export class PlayerComponent implements OnInit {
   playerDetails(id: number): void {
     this.amazaingManagementService.getPlayerById(id).subscribe(result => {
       this.player = result;
+      this.sendPlayerEvent.emit(this.player.playerId);
     });
-    setTimeout(()=>{ this.sendPlayerEvent.emit(this.player.playerId); }, 100);
+    // setTimeout(()=>{ this.sendPlayerEvent.emit(this.player.playerId); }, 100);
   }
 
   createPlayer(): void {    

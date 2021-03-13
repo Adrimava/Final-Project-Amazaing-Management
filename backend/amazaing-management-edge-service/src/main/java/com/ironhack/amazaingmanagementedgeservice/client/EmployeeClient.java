@@ -15,6 +15,14 @@ public interface EmployeeClient {
 	@ResponseStatus(HttpStatus.OK)
 	public List<Employee> getAllEmployees();
 
+	@GetMapping("/employees-by-player/{playerId}")
+	@ResponseStatus(HttpStatus.OK)
+	public List<Employee> getEmployeesByPlayerId(@PathVariable Long playerId);
+
+	@GetMapping("/employees-by-company/{companyId}")
+	@ResponseStatus(HttpStatus.OK)
+	public List<Employee> getEmployeesByCompanyId(@PathVariable Long companyId);
+
 	@GetMapping("/employee/{id}")
 	@ResponseStatus(HttpStatus.OK)
 	public Employee getEmployeeById(@PathVariable Long id);

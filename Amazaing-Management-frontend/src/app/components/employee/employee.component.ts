@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { EmployeeDTO } from 'src/app/models/employee-dto';
 import { AmazaingManagementService } from 'src/app/services/amazaing-management.service';
-import { Employee } from 'src/app/services/interfaces/database.interface';
+import { Company, Employee } from 'src/app/services/interfaces/database.interface';
 
 @Component({
   selector: 'app-employee',
@@ -18,9 +18,10 @@ export class EmployeeComponent implements OnInit {
   photo: string = 'Default picture';
   productivity: number = 0;
   clumsiness: number = 0;
-  company: number = 0;
+  companyId: number = 0;
   player: number = 0;
   formIsVisible: boolean = false;
+  company: Company = null;
 
   constructor(
     private amazaingManagementService: AmazaingManagementService
@@ -28,7 +29,7 @@ export class EmployeeComponent implements OnInit {
 
   ngOnInit(): void {
     this.getEmployees();
-    this.employeeDetails(1);
+    setTimeout(()=>{ this.employeeDetails(this.employeeList[0].employeeId) }, 100);
   }
 
   getEmployees(): void {
@@ -43,6 +44,7 @@ export class EmployeeComponent implements OnInit {
     this.amazaingManagementService.getEmployeeById(id).subscribe(result => {
       this.employee = result;
     });
+    setTimeout(()=>{ this.getEmployees() }, 100);
   }
 
   createEmployee(): void {
@@ -51,7 +53,7 @@ export class EmployeeComponent implements OnInit {
       this.photo,
       this.productivity,
       this.clumsiness,
-      this.company,
+      this.companyId,
       this.player
     );
 
@@ -60,8 +62,9 @@ export class EmployeeComponent implements OnInit {
     this.photo = '';
     this.productivity = 0;
     this.clumsiness = 0;
-    this.company = 0;
+    this.companyId = 0;
     this.player = 0;
+    setTimeout(()=>{ this.getEmployees(); }, 100);
   }
 
   updateEmployee(id: number): void {
@@ -70,15 +73,21 @@ export class EmployeeComponent implements OnInit {
       this.photo,
       this.productivity,
       this.clumsiness,
-      this.company,
+      this.companyId,
       this.player
     );
 
     this.amazaingManagementService.updateEmployee(id, this.body(employee));
+    setTimeout(()=>{ this.getEmployees(); }, 100);
+    setTimeout(()=>{ this.employee = this.employeeList[this.employeeList.length - 1] }, 200 );
   }
 
   deleteEmployee(id: number): void {
-    this.amazaingManagementService.deleteEmployee(id);
+    if (this.employeeList.length > 1) {
+      this.amazaingManagementService.deleteEmployee(id);
+      setTimeout(()=>{ this.getEmployees(); }, 100);
+      setTimeout(()=>{ this.employee = this.employeeList[this.employeeList.length - 1] }, 200 );
+    }
   }
 
   body(employee: EmployeeDTO): any {
@@ -87,10 +96,16 @@ export class EmployeeComponent implements OnInit {
       photo: employee.photo,
       productivity: employee.productivity,
       clumsiness: employee.clumsiness,
-      company: employee.company,
-      player: employee.player
+      companyId: employee.companyId,
+      player: employee.playerId
     }
     return employeeBody;
+  }
+
+  companyDetails(id: number): void {
+    this.amazaingManagementService.getCompanyById(id).subscribe(result => {
+      this.company = result;
+    });
   }
 
 }

@@ -66,5 +66,7 @@ export interface Employee{
     photo: string,
     productivity: number,
     clumsiness: number
+    companyId: number,
+    playerId: number
 }
     
