@@ -21,6 +21,8 @@ export class EmployeeComponent implements OnInit, OnChanges {
   companyId: number = 0;
   formIsVisible: boolean = false;
   company: Company = null;
+  companyList: Company[] = [];
+  selectedCompany: Company;
 
   constructor(
     private amazaingManagementService: AmazaingManagementService
@@ -29,6 +31,8 @@ export class EmployeeComponent implements OnInit, OnChanges {
   ngOnInit(): void {
     this.getEmployeesByPlayer(this.currentPlayer);
     setTimeout(()=>{ this.employeeDetails(this.employeeList[0].employeeId) }, 100);
+    this.getCompanies(this.currentPlayer);
+    setTimeout(()=>{ this.selectCompanyDetails(this.companyList[0].companyId) }, 100);
   }
 
   ngOnChanges(): void {
@@ -89,11 +93,11 @@ export class EmployeeComponent implements OnInit, OnChanges {
 
   updateEmployee(id: number): void {
     let employee: EmployeeDTO = new EmployeeDTO(
-      this.employeeName,
-      this.photo,
-      this.productivity,
-      this.clumsiness,
-      this.companyId,
+      this.employee.employeeName,
+      this.employee.photo,
+      this.employee.productivity,
+      this.employee.clumsiness,
+      this.employee.companyId,
       this.currentPlayer
     );
 
@@ -126,6 +130,25 @@ export class EmployeeComponent implements OnInit, OnChanges {
     this.amazaingManagementService.getCompanyById(id).subscribe(result => {
       this.company = result;
     });
+  }
+
+  getCompanies(id: number): void {
+    this.amazaingManagementService.getCompaniesByPlayerId(id).subscribe(result => {
+      this.companyList = result;
+    }, error => {
+      console.log(error);
+    });
+  }
+
+  selectCompanyDetails(id: number): void {
+    this.amazaingManagementService.getCompanyById(id).subscribe(result => {
+      this.selectedCompany = result;
+    });
+  }
+
+  moveEmployee(): void {
+    this.employee.companyId = this.selectedCompany.companyId;
+    this.updateEmployee(this.employee.employeeId);
   }
 
 }

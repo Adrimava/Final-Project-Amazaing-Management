@@ -25,6 +25,21 @@
 			<p *ngIf="employee.companyId !== 0">Working on: {{ company.companyName }}</p>
 			<p *ngIf="employee.companyId === 0">Working on: Not Working</p>
 		</div>
+		<form (ngSubmit)="moveEmployee()" #form="ngForm">
+			<div>
+				<label for="company">Move to:</label><br>
+				<select ngModel required #inputCompany="ngModel" name="company">
+					<option value="" hidden selected>Company</option>
+					<option *ngFor="let company of companyList" (click)="selectCompanyDetails(company.companyId)">
+						{{ company.companyName }}
+					</option>
+				</select>
+				<p class="error-msg" *ngIf="inputCompany.invalid && inputCompany.touched">Missing Company</p>
+			</div>
+			<div>
+				<button type="submit" [disabled]="form.invalid">Move Employee</button>
+			</div>	
+		</form>
 		<button (click)="deleteEmployee(employee.employeeId)">Fire {{ employee.employeeName }}</button>
 	</div>
 
@@ -37,15 +52,3 @@
 	</div>
 
 </div>
-
-<form (ngSubmit)="createEmployee()" #form="ngForm">
-		
-	<label for="company">company:</label><br>
-	<input type="number" ngModel required #inputCompany="ngModel" name="company"
-			[(ngModel)]="company"><br>
-	<p class="error-msg" *ngIf="inputCompany.invalid && inputCompany.touched">Missing company</p>
-
-	<button type="submit" [disabled]="form.invalid">Create Employee</button>
-	
-</form>
-

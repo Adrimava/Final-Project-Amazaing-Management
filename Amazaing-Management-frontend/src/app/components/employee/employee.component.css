@@ -9,7 +9,7 @@
     align-content: flex-start;
     flex-wrap: wrap;
     position: relative;
-    bottom: 200px;
+    bottom: 300px;
 }
 
 .employees {
@@ -76,7 +76,7 @@
 .appendix h2 {
     justify-self: flex-end;
     margin: 0;
-    padding: 5px;
+    padding: 5px 3px;
     padding-right: 15px;
     height: 40px;
     position: absolute;
@@ -132,10 +132,13 @@ button {
 }
 
 form {
-    border: 1px black solid;
+    display: flex;
     width: 300px;
-    margin: 10px;
-    padding: 10px;
+    padding: 0;
+}
+
+form button {
+    width: 100px;
 }
 
 .error-msg {
