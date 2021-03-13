@@ -33,55 +33,30 @@
 		<button>Sell {{ company.companyName }} ({{ businessModel.purchasePrice * 0.8 }}€)</button>
 	</div>
 
-	<h2>COMPANIES</h2>
-
-</div>
-
-<div *ngIf="formIsVisible">
-	<div class="form" >
-		<form (ngSubmit)="createCompany()" #form="ngForm">
-	
-			<label for="companyName">Company Name:</label><br>
-			<input type="text" ngModel required #inputName="ngModel" name="companyName" placeholder="Wall Street Puppy"
-					[(ngModel)]="companyName"><br>
-			<p class="error-msg" *ngIf="inputName.invalid && inputName.touched">Don't forget to write your company name!</p>
-	
-			<label for="revenue">revenue:</label><br>
-			<input type="number" ngModel required #inputRevenue="ngModel" name="revenue"
-					[(ngModel)]="revenue"><br>
-			<p class="error-msg" *ngIf="inputRevenue.invalid && inputRevenue.touched">Missing revenue</p>
-	
-			<label for="maintenance">maintenance:</label><br>
-			<input type="number" ngModel required #inputMaintenance="ngModel" name="maintenance"
-					[(ngModel)]="maintenance"><br>
-			<p class="error-msg" *ngIf="inputMaintenance.invalid && inputMaintenance.touched">Missing Maintenance</p>
-	
-			<label for="employeesNumber">employeesNumber:</label><br>
-			<input type="number" ngModel required #inputEmployeesNumber="ngModel" name="employeesNumber"
-					[(ngModel)]="employeesNumber"><br>
-			<p class="error-msg" *ngIf="inputEmployeesNumber.invalid && inputEmployeesNumber.touched">Missing Employees Number</p>
-	
-			<label for="accidentRiskIndex">accidentRiskIndex:</label><br>
-			<input type="number" ngModel required #inputAccidentRiskIndex="ngModel" name="accidentRiskIndex"
-					[(ngModel)]="accidentRiskIndex"><br>
-			<p class="error-msg" *ngIf="inputAccidentRiskIndex.invalid && inputAccidentRiskIndex.touched">Missing Accident Risk Index</p>
-	
-			<label for="businessModel">businessModel:</label><br>
-			<input type="number" ngModel required #inputBusinessModel="ngModel" name="businessModel"
-					[(ngModel)]="businessModel"><br>
-			<p class="error-msg" *ngIf="inputBusinessModel.invalid && inputBusinessModel.touched">Missing Business Model</p>
-	
-			<label for="player">player:</label><br>
-			<input type="number" ngModel required #inputPlayer="ngModel" name="player"
-					[(ngModel)]="player"><br>
-			<p class="error-msg" *ngIf="inputPlayer.invalid && inputPlayer.touched">Missing Player</p>
-	
-			<button type="submit" [disabled]="form.invalid">Create company</button>
-			
-		</form>
+	<div class="appendix">
+		<h2>COMPANIES</h2>
+		
+		<div class="form" >
+			<form (ngSubmit)="createCompany()" #form="ngForm">
+		
+				<label for="companyName">Company Name:</label><br>
+				<input type="text" ngModel required #inputName="ngModel" name="companyName" placeholder="Company Inc."
+						[(ngModel)]="companyName"><br>
+				<p class="error-msg" *ngIf="inputName.invalid && inputName.touched">Don't forget to write your company name!</p>
+		
+				<label for="businessModel">Type of Business:</label><br>
+				<select ngModel required #inputBusinessModel="ngModel" name="businessModel">
+					<option value="" hidden selected>Select the type of business</option>
+					<option *ngFor="let business of businessModelList" (click)="selectBusinessModelDetails(business.modelId)">
+						{{ business.modelName }}
+					</option>
+				</select>
+				<p class="error-msg" *ngIf="inputBusinessModel.invalid && inputBusinessModel.touched">Missing Business Model</p>
+		
+				<button type="submit" [disabled]="form.invalid">Buy company ({{ selectedBusinessModel.purchasePrice }}€)</button>
+				
+			</form>
+		</div>		
 	</div>
-	
-	<button (click)="updateCompany(1)">Update Company 1</button>
-	
-	<button (click)="deleteCompany(3)">Delete Company 3</button>
+
 </div>

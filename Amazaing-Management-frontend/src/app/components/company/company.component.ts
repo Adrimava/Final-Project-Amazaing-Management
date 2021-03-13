@@ -24,6 +24,8 @@ export class CompanyComponent implements OnInit, OnChanges{
   formIsVisible: boolean = false;
   businessModel: BusinessModel;
   employeeList: Employee[] = [];
+  businessModelList: BusinessModel[] = [];
+  selectedBusinessModel: BusinessModel;
 
   constructor(
     private amazaingManagementService: AmazaingManagementService
@@ -33,6 +35,8 @@ export class CompanyComponent implements OnInit, OnChanges{
     this.getCompanies(this.currentPlayer);
     setTimeout(()=>{ this.businessModelDetails(this.companyList[0].businessModelId) }, 100);
     setTimeout(()=>{ this.companyDetails(this.companyList[0].companyId) }, 100);
+    this.getBusinessModels();
+    setTimeout(()=>{ this.selectBusinessModelDetails(this.businessModelList[0].modelId) }, 100);
   }
 
   ngOnChanges(): void {
@@ -63,8 +67,8 @@ export class CompanyComponent implements OnInit, OnChanges{
       this.maintenance,
       this.employeesNumber,
       this.accidentRiskIndex,
-      this.businessModelId,
-      this.playerId
+      this.selectedBusinessModel.modelId,
+      this.currentPlayer
     );
     
     this.amazaingManagementService.storeCompany(this.body(company));
@@ -76,6 +80,7 @@ export class CompanyComponent implements OnInit, OnChanges{
     this.businessModelId = 0;
     this.playerId = 0;
     setTimeout(()=>{ this.getCompanies(this.currentPlayer); }, 100);
+    alert("hola");
   }
 
   updateCompany(id: number): void {
@@ -126,6 +131,20 @@ export class CompanyComponent implements OnInit, OnChanges{
       this.employeeList = result;
     }, error => {
       console.log(error);
+    });
+  }
+
+  getBusinessModels(): void {
+    this.amazaingManagementService.getAllBusinessModel().subscribe(result => {
+      this.businessModelList = result;
+    }, error => {
+      console.log(error);
+    });
+  }
+  
+  selectBusinessModelDetails(id: number): void {
+    this.amazaingManagementService.getBusinessModelById(id).subscribe(result => {
+      this.selectedBusinessModel = result;
     });
   }
 
