@@ -38,7 +38,7 @@
 				<p class="error-msg" *ngIf="inputCompany.invalid && inputCompany.touched">Missing Company</p>
 			</div>
 			<div>
-				<button type="submit" [disabled]="form.invalid">Move Employee</button>
+				<button type="submit" [disabled]="form.invalid">Move Employee (10€)</button>
 			</div>	
 		</form>
 		<button (click)="deleteEmployee(employee.employeeId)">Fire {{ employee.employeeName }}</button>

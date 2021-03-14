@@ -51,6 +51,7 @@ export class CompanyComponent implements OnInit, OnChanges{
 
   ngOnChanges(): void {
     this.ngOnInit();
+    this.update();
   }
 
   getCompanies(id: number): void {
@@ -87,7 +88,8 @@ export class CompanyComponent implements OnInit, OnChanges{
     );
     
     this.amazaingManagementService.storeCompany(this.body(company));
-    setTimeout(()=>{ this.getCompanies(this.currentPlayer); }, 200);
+    setTimeout(()=>{ this.getCompanies(this.currentPlayer); }, 100);
+    setTimeout(()=>{ this.update(); }, 300);
   }
 
   createCompany(): void {
@@ -105,27 +107,49 @@ export class CompanyComponent implements OnInit, OnChanges{
       );      
       this.amazaingManagementService.storeCompany(this.body(company));
       this.companyName = '';
-      setTimeout(()=>{ this.getCompanies(this.currentPlayer); }, 200);
+      setTimeout(()=>{ this.getCompanies(this.currentPlayer); }, 100);
+      setTimeout(()=>{ this.update(); }, 300);
       this.formIsVisible = false;
     } else {
       this.notEnoughMoney = true;
     }
   }
 
-  updateCompany(id: number): void {
+  update() : void {
+    this.getCompanies(this.currentPlayer);
+    setTimeout(()=>{
+      for (let company of this.companyList) {
+        this.updateCompany(company);
+      }
+    }, 100);
+    setTimeout(()=>{ this.getCompanies(this.currentPlayer); }, 500);
+  }
+
+  updateCompany(updatedCompany: Company): void {
+    updatedCompany.employeesNumber = updatedCompany.employees.length;
+    updatedCompany.maintenance = (updatedCompany.businessModelDetails.dailyCosts +
+      updatedCompany.businessModelDetails.employeeSalary * updatedCompany.employeesNumber);
+    updatedCompany.revenue = 0;
+    updatedCompany.accidentRiskIndex = 0;
+    for (let employee of updatedCompany.employees) {
+      updatedCompany.revenue += employee.productivity * updatedCompany.businessModelDetails.averageRevenue / 100;
+      updatedCompany.accidentRiskIndex += employee.clumsiness;
+    }
+    if (updatedCompany.employees.length > 0) {
+      updatedCompany.accidentRiskIndex /= updatedCompany.employees.length;
+    }
+
     let company: CompanyDTO = new CompanyDTO(
-      this.companyName,
-      this.revenue,
-      this.maintenance,
-      this.employeesNumber,
-      this.accidentRiskIndex,
-      this.selectedBusinessModel.modelId,
+      updatedCompany.companyName,
+      updatedCompany.revenue,
+      updatedCompany.maintenance,
+      updatedCompany.employeesNumber,
+      updatedCompany.accidentRiskIndex,
+      updatedCompany.businessModelId,
       this.currentPlayer
     );
 
-    this.amazaingManagementService.updateCompany(id, this.body(company));
-    setTimeout(()=>{ this.getCompanies(this.currentPlayer); }, 100);
-    setTimeout(()=>{ this.company = this.companyList[this.companyList.length - 1] }, 200 ); 
+    setTimeout(()=>{ this.amazaingManagementService.updateCompany(updatedCompany.companyId, this.body(company)); }, 100);
   }
 
   deleteCompany(id: number): void {

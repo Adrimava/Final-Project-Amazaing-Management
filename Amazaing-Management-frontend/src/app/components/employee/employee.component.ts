@@ -157,6 +157,7 @@ export class EmployeeComponent implements OnInit, OnChanges {
   }
 
   moveEmployee(): void {
+    this.sendMoneyChanges.emit(-10);
     this.employee.companyId = this.selectedCompany.companyId;
     this.updateEmployee(this.employee.employeeId);
   }

@@ -61,7 +61,10 @@ export interface Company {
     },
     employees: [
         {
-            employeeId: number,
+            employeeName: string,
+            photo: string,
+            productivity: number,
+            clumsiness: number
         }
     ]
 }
