@@ -17,7 +17,24 @@ CREATE TABLE business_model(
 INSERT INTO business_model(model_id, model_name, photo, purchase_price, max_employees, average_revenue, daily_costs, employee_salary) VALUES
 	(1, 'Lemonade Stand', 'https://avatars.dicebear.com/api/identicon/Lemonade Stand.svg', 600, 2, 100, 10, 20),
     (2, 'Kiosk', 'https://avatars.dicebear.com/api/identicon/Kiosk.svg', 1000, 1, 100, 40, 30),
-    (3, 'Khlav Kalash Cart', 'https://avatars.dicebear.com/api/identicon/Khlav Kalash Cart.svg', 450, 1, 50, 10, 20)
+    (3, 'Khlav Kalash Cart', 'https://avatars.dicebear.com/api/identicon/Khlav Kalash Cart.svg', 450, 1, 50, 10, 20),
+    (4, 'Hairdresser', 'https://avatars.dicebear.com/api/identicon/Hairdresser.svg', 1500, 4, 200, 40, 40),
+    (5, 'Gym', 'https://avatars.dicebear.com/api/identicon/Gym.svg', 2000, 4, 190, 60, 30),
+	(6, 'Spanish academy', 'https://avatars.dicebear.com/api/identicon/Spanish academy.svg', 2100, 5, 100, 40, 60),
+	(7, 'Book shop', 'https://avatars.dicebear.com/api/identicon/Book shop.svg', 2500, 3, 150, 50, 60),
+    (8, 'Real state', 'https://avatars.dicebear.com/api/identicon/Real state.svg', 3000, 4, 250, 200, 50),
+    (9, 'Cinema', 'https://avatars.dicebear.com/api/identicon/Cinema.svg', 5000, 6, 400, 400, 40),
+    (10, 'Theater', 'https://avatars.dicebear.com/api/identicon/Theater.svg', 5000, 8, 300, 400, 60),
+    (11, 'Small amusement park', 'https://avatars.dicebear.com/api/identicon/Small musement park.svg', 8000, 10, 600, 700, 50),
+    (12, 'Small mall', 'https://avatars.dicebear.com/api/identicon/Small mall.svg', 13000, 15, 1000, 3000, 50),
+    (13, 'Hospital', 'https://avatars.dicebear.com/api/identicon/Hospital.svg', 12500, 20, 800, 4000, 80),
+    (14, 'Private school', 'https://avatars.dicebear.com/api/identicon/Private school.svg', 12000, 15, 500, 1500, 80),
+    (15, 'Consulting', 'https://avatars.dicebear.com/api/identicon/Consulting.svg', 12000, 5, 900, 1000, 200),
+    (16, 'Train station', 'https://avatars.dicebear.com/api/identicon/Train station.svg', 19000, 10, 1100, 1100, 100),
+    (17, 'Cab company', 'https://avatars.dicebear.com/api/identicon/Cab company.svg', 20000, 30, 300, 800, 80),
+    (18, 'Small Airport', 'https://avatars.dicebear.com/api/identicon/Small Airport.svg', 30000, 25, 800, 2000, 300),
+    (19, 'Bank', 'https://avatars.dicebear.com/api/identicon/Bank.svg', 40000, 30, 1000, 1000, 100),
+    (20, 'Big-tech', 'https://avatars.dicebear.com/api/identicon/Cab company.svg', 100000, 100, 5000, 10000, 150)    
 ;
 
 DROP SCHEMA IF EXISTS player;
@@ -44,27 +61,12 @@ CREATE TABLE player_companies(
     FOREIGN KEY (player_id) REFERENCES player(player_id)
 );
 
-INSERT INTO player_companies(company_id, player_id) VALUES
-	(1, 1),
-    (2, 1),
-    (3, 1),
-    (4, 2)
-;
-
 CREATE TABLE player_employees(
 	employee_id BIGINT NOT NULL,
     player_id BIGINT NOT NULL,
     PRIMARY KEY (employee_id),
     FOREIGN KEY (player_id) REFERENCES player(player_id)
 );
-
-INSERT INTO player_employees(employee_id, player_id) VALUES
-	(1, 1),
-    (2, 1),
-    (3, 1),
-    (4, 1),
-    (5, 2)
-;
 
 DROP SCHEMA IF EXISTS company;
 CREATE SCHEMA company;
