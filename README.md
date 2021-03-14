@@ -18,6 +18,9 @@ The application is divided into microservices and works by calling the amazaing-
 
 Once all these steps have been completed, the application can be accessed at the following url: http://localhost:4200/
 
+If everything went well, you should be watching something similar to this:
+![Amazaing-Management screenshot](/images/Amazaing-Management.JPG)
+
 ## What can be done in the application?
 
 The objective of the game is to accumulate as many companies and money as possible. Although in this first version the functionalities are somewhat limited, 
@@ -26,6 +29,8 @@ you can create different players that will serve as avatar, for which you have t
 Each player will be able to buy and sell different companies, hire and fire employees and relocate them to the most convenient place.
 Each company will generate different profits and each employee will have a different productivity level generated randomly. Employees also have a percentage of clumsiness, 
 which will allow future updates of the application to trigger random events such as accidents that can cost money to repair.
+
+Waiting for future updates, at the moment there are times when you have to press the "reload changes" button first before moving on to the next week. This will be fixed soon!
 
 ## What's coming in the future?
 
@@ -39,5 +44,6 @@ Possibility of real-time management (information will be updated every few secon
 ## Additional details:
 The avatars have been obtained through connection with the API https://avatars.dicebear.com/.
 Names are randomly generated with API https://randomuser.me/api/.
+Sometimes the data is not quickly updated, refreshing the page should fix this for the moment.
 
 Thank you for testing the application. Enjoy it!
