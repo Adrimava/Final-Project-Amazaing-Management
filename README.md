@@ -35,10 +35,15 @@ Waiting for future updates, at the moment there are times when you have to press
 ## What's coming in the future?
 
 -Random events based on employee clumsiness.
-Possibility of real-time management (information will be updated every few seconds).
+
+-Possibility of real-time management (information will be updated every few seconds).
+
 -Limitations on hiring and purchasing companies.
+
 -Possibility of borrowing from the bank.
+
 -Possibility of contracting different insurances.
+
 -Greater management possibilities.
 
 ## Additional details:
