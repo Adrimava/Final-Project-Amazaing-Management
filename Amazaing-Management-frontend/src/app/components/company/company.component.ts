@@ -58,6 +58,10 @@ export class CompanyComponent implements OnInit, OnChanges{
   getCompanies(id: number): void {
     this.amazaingManagementService.getCompaniesByPlayerId(id).subscribe(result => {
       this.companyList = result;
+      this.totalWeeklyBalance = 0;
+      for (let company of this.companyList) {
+        this.totalWeeklyBalance += company.revenue - company.maintenance;
+      };
     }, error => {
       console.log(error);
     });
