@@ -14,6 +14,8 @@ Then you have to access the folders containing the Eureka server and the rest of
 
 Finally, access the folder ./Amazaing-Management-frontend, where everything related to Angular is located, and execute the command "ng serve".
 
+The application is divided into microservices and works by calling the amazaing-management-edge-service service and two APIs from the front end. amazaing-management-edge-service connects in turn with the rest of the services, from which it obtains the necessary data.
+
 Once all these steps have been completed, the application can be accessed at the following url: http://localhost:4200/
 
 ## What can be done in the application?
