@@ -35,7 +35,7 @@
 			<p>Number of employees: {{ company.employeesNumber }}</p> 	
 		</div>
 		<div class="employee-mini-avatar-container">
-			<div class="employee-mini-avatar" *ngFor="let employee of employeeList">
+			<div class="employee-mini-avatar" *ngFor="let employee of employeeList" (click)="employeeDetails(employee.employeeId)">
 				<img src="{{employee.photo}}" alt="">
 			</div>
 		</div>

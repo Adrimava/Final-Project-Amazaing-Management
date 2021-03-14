@@ -13,10 +13,10 @@
         </header>
         
         <main>
-            <app-company (sendMoneyChanges)="getMoneyChanges($event)"
+            <app-company (sendMoneyChanges)="getMoneyChanges($event)" (sendEmployeeId)="getEmployeeId($event)"
                     [currentPlayer]="currentPlayer" [firstCompany]="firstCompany" [money]="money"></app-company>
             <app-employee (sendMoneyChanges)="getMoneyChanges($event)"
-                    [currentPlayer]="currentPlayer" [money]="money"></app-employee>
+                    [currentPlayer]="currentPlayer" [money]="money" [selectedEmployee]="employeeId"></app-employee>
         </main>
     </div>
 

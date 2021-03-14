@@ -14,6 +14,8 @@ export class EmployeeComponent implements OnInit, OnChanges {
   currentPlayer: number = 1;
   @Input()
   money: number = 1000;
+  @Input()
+  selectedEmployee: number = 0
   employeeList: Employee[] = [];
   employee: Employee = null;
   employeeName: string = '';
@@ -35,7 +37,9 @@ export class EmployeeComponent implements OnInit, OnChanges {
 
   ngOnInit(): void {
     this.getEmployeesByPlayer(this.currentPlayer);
-    setTimeout(()=>{ this.employeeDetails(this.employeeList[0].employeeId) }, 200);
+    if (this.selectedEmployee == 0) {
+      setTimeout(()=>{ this.employeeDetails(this.employeeList[0].employeeId) }, 200);
+    }
     this.getCompanies(this.currentPlayer);
     setTimeout(()=>{ this.selectCompanyDetails(this.companyList[0].companyId) }, 200);
     this.notEnoughtMoney = false;
@@ -43,6 +47,7 @@ export class EmployeeComponent implements OnInit, OnChanges {
 
   ngOnChanges(): void {
     this.ngOnInit();
+    this.employeeDetails(this.selectedEmployee);
   }
 
   getEmployeesByPlayer(id: number): void {

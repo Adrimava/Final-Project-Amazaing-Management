@@ -32,6 +32,7 @@ export class CompanyComponent implements OnInit, OnChanges{
   totalWeeklyBalance: number = 0;
 
   @Output() sendMoneyChanges = new EventEmitter<number>();
+  @Output() sendEmployeeId = new EventEmitter<number>();
 
   constructor(
     private amazaingManagementService: AmazaingManagementService
@@ -210,6 +211,10 @@ export class CompanyComponent implements OnInit, OnChanges{
     this.amazaingManagementService.getBusinessModelById(id).subscribe(result => {
       this.selectedBusinessModel = result;
     });
+  }
+
+  employeeDetails(id: number): void {
+    this.sendEmployeeId.emit(id);
   }
 
   refresh(): void {
