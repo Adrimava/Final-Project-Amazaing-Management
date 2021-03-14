@@ -1,4 +1,12 @@
-<h1>{{money}}</h1>
+<div class="control-bar">
+	<div class="total-balance">
+		<p>Total Weekly Balance</p>
+		<p class="money">{{totalWeeklyBalance}}€</p>
+	</div>
+	<button (click)="nextWeek()">Next Week</button>
+	<button (click)="refresh()">Reload Changes</button>
+</div>
+
 <div class="container">
 	
 	<div class="companies">

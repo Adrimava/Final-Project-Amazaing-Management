@@ -29,6 +29,7 @@ export class CompanyComponent implements OnInit, OnChanges{
   businessModelList: BusinessModel[] = [];
   selectedBusinessModel: BusinessModel;
   notEnoughMoney: boolean = false;
+  totalWeeklyBalance: number = 0;
 
   @Output() sendMoneyChanges = new EventEmitter<number>();
 
@@ -123,6 +124,10 @@ export class CompanyComponent implements OnInit, OnChanges{
       }
     }, 100);
     setTimeout(()=>{ this.getCompanies(this.currentPlayer); }, 500);
+    this.totalWeeklyBalance = 0;
+    for (let company of this.companyList) {
+      this.totalWeeklyBalance += company.revenue - company.maintenance;
+    }
   }
 
   updateCompany(updatedCompany: Company): void {
@@ -159,6 +164,7 @@ export class CompanyComponent implements OnInit, OnChanges{
       setTimeout(()=>{ this.getCompanies(this.currentPlayer); }, 100);
       setTimeout(()=>{ this.company = this.companyList[this.companyList.length - 1] }, 200 );
     }
+    this.update();
   }
 
   body(company: CompanyDTO): any {
@@ -200,6 +206,14 @@ export class CompanyComponent implements OnInit, OnChanges{
     this.amazaingManagementService.getBusinessModelById(id).subscribe(result => {
       this.selectedBusinessModel = result;
     });
+  }
+
+  refresh(): void {
+    this.sendMoneyChanges.emit(0);
+  }
+
+  nextWeek(): void {
+    this.sendMoneyChanges.emit(this.totalWeeklyBalance);
   }
 
 }
