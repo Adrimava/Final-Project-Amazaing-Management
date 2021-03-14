@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output } from '@angular/core';
 import { EmployeeDTO } from 'src/app/models/employee-dto';
 import { AmazaingManagementService } from 'src/app/services/amazaing-management.service';
 import { Company, Employee } from 'src/app/services/interfaces/database.interface';
@@ -25,6 +25,9 @@ export class EmployeeComponent implements OnInit, OnChanges {
   company: Company = null;
   companyList: Company[] = [];
   selectedCompany: Company;
+  notEnoughtMoney: boolean = false;
+
+  @Output() sendMoneyChanges = new EventEmitter<number>();
 
   constructor(
     private amazaingManagementService: AmazaingManagementService
@@ -35,6 +38,7 @@ export class EmployeeComponent implements OnInit, OnChanges {
     setTimeout(()=>{ this.employeeDetails(this.employeeList[0].employeeId) }, 200);
     this.getCompanies(this.currentPlayer);
     setTimeout(()=>{ this.selectCompanyDetails(this.companyList[0].companyId) }, 200);
+    this.notEnoughtMoney = false;
   }
 
   ngOnChanges(): void {
@@ -77,20 +81,24 @@ export class EmployeeComponent implements OnInit, OnChanges {
   }
 
   createEmployee(): void {
-    let employee: EmployeeDTO = new EmployeeDTO(
-      this.employeeName,
-      this.photo + this.employeeName +".svg",
-      this.productivity,
-      this.clumsiness,
-      this.companyId,
-      this.currentPlayer
-    );
-
-    this.amazaingManagementService.storeEmployee(this.body(employee));
-    this.randomValues();
-    this.companyId = 0;
-    setTimeout(()=>{ this.getEmployeesByPlayer(this.currentPlayer); }, 100);
-    this.formIsVisible = false;
+    if (this.money >= 100) {
+      this.sendMoneyChanges.emit(-100);
+      let employee: EmployeeDTO = new EmployeeDTO(
+        this.employeeName,
+        this.photo + this.employeeName +".svg",
+        this.productivity,
+        this.clumsiness,
+        this.companyId,
+        this.currentPlayer
+      );
+      this.amazaingManagementService.storeEmployee(this.body(employee));
+      this.randomValues();
+      this.companyId = 0;
+      setTimeout(()=>{ this.getEmployeesByPlayer(this.currentPlayer); }, 100);
+      this.formIsVisible = false;
+    } else {
+      this.notEnoughtMoney = true;
+    }
   }
 
   updateEmployee(id: number): void {

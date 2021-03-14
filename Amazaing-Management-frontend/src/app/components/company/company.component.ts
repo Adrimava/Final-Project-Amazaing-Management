@@ -105,10 +105,6 @@ export class CompanyComponent implements OnInit, OnChanges{
       );      
       this.amazaingManagementService.storeCompany(this.body(company));
       this.companyName = '';
-      this.revenue = 0;
-      this.maintenance = 0;
-      this.employeesNumber = 0;
-      this.accidentRiskIndex = 0;
       setTimeout(()=>{ this.getCompanies(this.currentPlayer); }, 200);
       this.formIsVisible = false;
     } else {
@@ -134,7 +130,7 @@ export class CompanyComponent implements OnInit, OnChanges{
 
   deleteCompany(id: number): void {
     if (this.companyList.length > 1) {
-      this.sendMoneyChanges.emit(this.businessModel.purchasePrice);
+      this.sendMoneyChanges.emit(this.businessModel.purchasePrice * 0.8);
       this.amazaingManagementService.deleteCompany(id);
       setTimeout(()=>{ this.getCompanies(this.currentPlayer); }, 100);
       setTimeout(()=>{ this.company = this.companyList[this.companyList.length - 1] }, 200 );

@@ -11,6 +11,7 @@
 			<p>Productivity: {{ productivity }}%</p> 
 			<p>Clumsiness: {{ clumsiness }}%</p>
 			<button (click)="createEmployee()">Hire Employee (100€)</button>
+			<p class="error-msg" *ngIf="notEnoughtMoney">Not enough money</p>
 		</div>
 	</div>
 

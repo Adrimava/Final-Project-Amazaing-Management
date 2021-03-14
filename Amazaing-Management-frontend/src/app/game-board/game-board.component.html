@@ -15,7 +15,8 @@
         <main>
             <app-company (sendMoneyChanges)="getMoneyChanges($event)"
                     [currentPlayer]="currentPlayer" [firstCompany]="firstCompany" [money]="money"></app-company>
-            <app-employee [currentPlayer]="currentPlayer" [money]="money"></app-employee>
+            <app-employee (sendMoneyChanges)="getMoneyChanges($event)"
+                    [currentPlayer]="currentPlayer" [money]="money"></app-employee>
         </main>
     </div>
 
