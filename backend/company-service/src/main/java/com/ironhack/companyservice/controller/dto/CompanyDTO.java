@@ -17,12 +17,12 @@ public class CompanyDTO {
 	private Long businessModelId;
 	private Long playerId;
 	private BusinessModelDTO businessModelDetails;
-	private List<Long> employees;
+	private List<EmployeeDTO> employees;
 
 	public CompanyDTO() {
 	}
 
-	public CompanyDTO(Company company, BusinessModelDTO businessModelDetails, List<Long> employees) {
+	public CompanyDTO(Company company, BusinessModelDTO businessModelDetails, List<EmployeeDTO> employees) {
 		this.companyId = company.getCompanyId();
 		this.companyName = company.getCompanyName();
 		this.revenue = company.getRevenue();
@@ -107,11 +107,11 @@ public class CompanyDTO {
 		this.businessModelDetails = businessModelDetails;
 	}
 
-	public List<Long> getEmployees() {
+	public List<EmployeeDTO> getEmployees() {
 		return employees;
 	}
 
-	public void setEmployees(List<Long> employees) {
+	public void setEmployees(List<EmployeeDTO> employees) {
 		this.employees = employees;
 	}
 

@@ -4,6 +4,7 @@ import com.ironhack.companyservice.client.BusinessModelClient;
 import com.ironhack.companyservice.client.EmployeeClient;
 import com.ironhack.companyservice.controller.dto.BusinessModelDTO;
 import com.ironhack.companyservice.controller.dto.CompanyDTO;
+import com.ironhack.companyservice.controller.dto.EmployeeDTO;
 import com.ironhack.companyservice.model.Company;
 import com.ironhack.companyservice.repository.CompanyRepository;
 import com.ironhack.companyservice.service.interfaces.ICompanyService;
@@ -32,10 +33,10 @@ public class CompanyService implements ICompanyService {
 	public List<CompanyDTO> getAllCompanies() {
 		List<Company> companyList = companyRepository.findAll();
 		List<CompanyDTO> companyDTOList = new ArrayList<>();
-		List<Long> employeeDTOList = new ArrayList<>();
 
 		for (Company company : companyList) {
 			BusinessModelDTO businessModelDTO = businessModelClient.getBusinessModelById(company.getBusinessModelId());
+			List<EmployeeDTO> employeeDTOList = employeeClient.getEmployeesByCompanyId(company.getCompanyId());
 			companyDTOList.add(new CompanyDTO(company, businessModelDTO, employeeDTOList));
 		}
 		return companyDTOList;
@@ -45,10 +46,10 @@ public class CompanyService implements ICompanyService {
 	public List<CompanyDTO> getCompaniesByPlayerId(Long playerId) {
 		List<Company> companyList = companyRepository.findByPlayerId(playerId);
 		List<CompanyDTO> companyDTOList = new ArrayList<>();
-		List<Long> employeeDTOList = new ArrayList<>();
 
 		for (Company company : companyList) {
 			BusinessModelDTO businessModelDTO = businessModelClient.getBusinessModelById(company.getBusinessModelId());
+			List<EmployeeDTO> employeeDTOList = employeeClient.getEmployeesByCompanyId(company.getCompanyId());
 			companyDTOList.add(new CompanyDTO(company, businessModelDTO, employeeDTOList));
 		}
 		return companyDTOList;
@@ -60,7 +61,7 @@ public class CompanyService implements ICompanyService {
 
 		if(company.isPresent()) {
 			BusinessModelDTO businessModelDTO = businessModelClient.getBusinessModelById(company.get().getBusinessModelId());
-			List<Long> employeeDTOList = new ArrayList<>();
+			List<EmployeeDTO> employeeDTOList = employeeClient.getEmployeesByCompanyId(company.get().getCompanyId());
 			CompanyDTO companyDTO = new CompanyDTO(company.get(), businessModelDTO, employeeDTOList);
 			return companyDTO;
 		} else {

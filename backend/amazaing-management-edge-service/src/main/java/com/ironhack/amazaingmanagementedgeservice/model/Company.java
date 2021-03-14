@@ -1,5 +1,8 @@
 package com.ironhack.amazaingmanagementedgeservice.model;
-import javax.persistence.*;
+
+import com.ironhack.amazaingmanagementedgeservice.controller.dto.BusinessModelDTO;
+import com.ironhack.amazaingmanagementedgeservice.controller.dto.EmployeeDTO;
+
 import java.math.BigDecimal;
 import java.util.List;
 
@@ -12,20 +15,23 @@ public class Company {
 	private BigDecimal accidentRiskIndex;
 	private Long businessModelId;
 	private Long playerId;
+	private BusinessModelDTO businessModelDetails;
+	private List<EmployeeDTO> employees;
 
 	public Company() {
 	}
 
-	public Company(String companyName, BigDecimal revenue, BigDecimal maintenance,
-				   Integer employeesNumber, BigDecimal accidentRiskIndex,
-				   Long businessModelId, Long playerId) {
-		this.companyName = companyName;
-		this.revenue = revenue;
-		this.maintenance = maintenance;
-		this.employeesNumber = employeesNumber;
-		this.accidentRiskIndex = accidentRiskIndex;
-		this.businessModelId = businessModelId;
-		this.playerId = playerId;
+	public Company(Company company, BusinessModelDTO businessModelDetails, List<EmployeeDTO> employees) {
+		this.companyId = company.getCompanyId();
+		this.companyName = company.getCompanyName();
+		this.revenue = company.getRevenue();
+		this.maintenance = company.getMaintenance();
+		this.employeesNumber = company.getEmployeesNumber();
+		this.accidentRiskIndex = company.getAccidentRiskIndex();
+		this.businessModelId = company.getBusinessModelId();
+		this.playerId = company.getPlayerId();
+		this.businessModelDetails = businessModelDetails;
+		this.employees = employees;
 	}
 
 	public Long getCompanyId() {
@@ -92,5 +98,20 @@ public class Company {
 		this.playerId = playerId;
 	}
 
-}
+	public BusinessModelDTO getBusinessModelDetails() {
+		return businessModelDetails;
+	}
 
+	public void setBusinessModelDetails(BusinessModelDTO businessModelDetails) {
+		this.businessModelDetails = businessModelDetails;
+	}
+
+	public List<EmployeeDTO> getEmployees() {
+		return employees;
+	}
+
+	public void setEmployees(List<EmployeeDTO> employees) {
+		this.employees = employees;
+	}
+
+}

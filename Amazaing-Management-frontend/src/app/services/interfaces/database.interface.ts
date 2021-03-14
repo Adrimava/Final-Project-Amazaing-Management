@@ -49,6 +49,16 @@ export interface Company {
     accidentRiskIndex: number,
     businessModelId: number,
     playerId: number,
+    businessModelDetails: {
+        modelId: number,
+        modelName: string,
+        photo: string,
+        purchasePrice: number,
+        maxEmployees: number,
+        averageRevenue: number,
+        dailyCosts: number,
+        employeeSalary: number
+    },
     employees: [
         {
             employeeId: number,
