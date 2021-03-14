@@ -144,8 +144,8 @@ export class CompanyComponent implements OnInit, OnChanges{
       maintenance: company.maintenance,
       employeesNumber: company.employeesNumber,
       accidentRiskIndex: company.accidentRiskIndex,
-      businessModel: company.businessModelId,
-      player: company.playerId
+      businessModelId: company.businessModelId,
+      playerId: company.playerId
     }
     return companyBody;
   }

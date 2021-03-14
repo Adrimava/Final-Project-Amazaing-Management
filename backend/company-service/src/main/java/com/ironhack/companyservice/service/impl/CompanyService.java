@@ -1,5 +1,8 @@
 package com.ironhack.companyservice.service.impl;
 
+import com.ironhack.companyservice.client.BusinessModelClient;
+import com.ironhack.companyservice.client.EmployeeClient;
+import com.ironhack.companyservice.controller.dto.BusinessModelDTO;
 import com.ironhack.companyservice.controller.dto.CompanyDTO;
 import com.ironhack.companyservice.model.Company;
 import com.ironhack.companyservice.repository.CompanyRepository;
@@ -9,6 +12,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -18,22 +22,47 @@ public class CompanyService implements ICompanyService {
 	@Autowired
 	private CompanyRepository companyRepository;
 
+	@Autowired
+	private BusinessModelClient businessModelClient;
+
+	@Autowired
+	private EmployeeClient employeeClient;
+
 	@Override
-	public List<Company> getAllCompanies() {
-		return companyRepository.findAll();
+	public List<CompanyDTO> getAllCompanies() {
+		List<Company> companyList = companyRepository.findAll();
+		List<CompanyDTO> companyDTOList = new ArrayList<>();
+		List<Long> employeeDTOList = new ArrayList<>();
+
+		for (Company company : companyList) {
+			BusinessModelDTO businessModelDTO = businessModelClient.getBusinessModelById(company.getBusinessModelId());
+			companyDTOList.add(new CompanyDTO(company, businessModelDTO, employeeDTOList));
+		}
+		return companyDTOList;
 	}
 
 	@Override
-	public List<Company> getCompaniesByPlayerId(Long playerId) {
-		return companyRepository.findByPlayerId(playerId);
+	public List<CompanyDTO> getCompaniesByPlayerId(Long playerId) {
+		List<Company> companyList = companyRepository.findByPlayerId(playerId);
+		List<CompanyDTO> companyDTOList = new ArrayList<>();
+		List<Long> employeeDTOList = new ArrayList<>();
+
+		for (Company company : companyList) {
+			BusinessModelDTO businessModelDTO = businessModelClient.getBusinessModelById(company.getBusinessModelId());
+			companyDTOList.add(new CompanyDTO(company, businessModelDTO, employeeDTOList));
+		}
+		return companyDTOList;
 	}
 
 	@Override
-	public Company getCompanyById(Long id) {
+	public CompanyDTO getCompanyById(Long id) {
 		Optional<Company> company = companyRepository.findById(id);
 
 		if(company.isPresent()) {
-			return company.get();
+			BusinessModelDTO businessModelDTO = businessModelClient.getBusinessModelById(company.get().getBusinessModelId());
+			List<Long> employeeDTOList = new ArrayList<>();
+			CompanyDTO companyDTO = new CompanyDTO(company.get(), businessModelDTO, employeeDTOList);
+			return companyDTO;
 		} else {
 			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Company not Found");
 		}
@@ -47,8 +76,8 @@ public class CompanyService implements ICompanyService {
 				companyDTO.getMaintenance(),
 				companyDTO.getEmployeesNumber(),
 				companyDTO.getAccidentRiskIndex(),
-				companyDTO.getBusinessModel(),
-				companyDTO.getPlayer()
+				companyDTO.getBusinessModelId(),
+				companyDTO.getPlayerId()
 		);
 
 		return companyRepository.save(company);
@@ -65,8 +94,8 @@ public class CompanyService implements ICompanyService {
 				companyDTO.getMaintenance(),
 				companyDTO.getEmployeesNumber(),
 				companyDTO.getAccidentRiskIndex(),
-				companyDTO.getBusinessModel(),
-				companyDTO.getPlayer()
+				companyDTO.getBusinessModelId(),
+				companyDTO.getPlayerId()
 		);
 		company.setCompanyId(id);
 		companyRepository.save(company);

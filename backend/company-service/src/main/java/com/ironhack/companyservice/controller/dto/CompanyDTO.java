@@ -1,22 +1,47 @@
 package com.ironhack.companyservice.controller.dto;
 
+import com.ironhack.companyservice.model.Company;
+
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 import java.util.List;
 
 public class CompanyDTO {
-	@NotEmpty
+	private Long companyId;
 	private String companyName;
 	private BigDecimal revenue;
 	private BigDecimal maintenance;
 	private Integer employeesNumber;
 	private BigDecimal accidentRiskIndex;
-	@NotNull
-	private Long businessModel;
-	@NotNull
-	private Long player;
+	private Long businessModelId;
+	private Long playerId;
+	private BusinessModelDTO businessModelDetails;
 	private List<Long> employees;
+
+	public CompanyDTO() {
+	}
+
+	public CompanyDTO(Company company, BusinessModelDTO businessModelDetails, List<Long> employees) {
+		this.companyId = company.getCompanyId();
+		this.companyName = company.getCompanyName();
+		this.revenue = company.getRevenue();
+		this.maintenance = company.getMaintenance();
+		this.employeesNumber = company.getEmployeesNumber();
+		this.accidentRiskIndex = company.getAccidentRiskIndex();
+		this.businessModelId = company.getBusinessModelId();
+		this.playerId = company.getPlayerId();
+		this.businessModelDetails = businessModelDetails;
+		this.employees = employees;
+	}
+
+	public Long getCompanyId() {
+		return companyId;
+	}
+
+	public void setCompanyId(Long companyId) {
+		this.companyId = companyId;
+	}
 
 	public String getCompanyName() {
 		return companyName;
@@ -58,20 +83,28 @@ public class CompanyDTO {
 		this.accidentRiskIndex = accidentRiskIndex;
 	}
 
-	public Long getBusinessModel() {
-		return businessModel;
+	public Long getBusinessModelId() {
+		return businessModelId;
 	}
 
-	public void setBusinessModel(Long businessModel) {
-		this.businessModel = businessModel;
+	public void setBusinessModelId(Long businessModelId) {
+		this.businessModelId = businessModelId;
 	}
 
-	public Long getPlayer() {
-		return player;
+	public Long getPlayerId() {
+		return playerId;
 	}
 
-	public void setPlayer(Long player) {
-		this.player = player;
+	public void setPlayerId(Long playerId) {
+		this.playerId = playerId;
+	}
+
+	public BusinessModelDTO getBusinessModelDetails() {
+		return businessModelDetails;
+	}
+
+	public void setBusinessModelDetails(BusinessModelDTO businessModelDetails) {
+		this.businessModelDetails = businessModelDetails;
 	}
 
 	public List<Long> getEmployees() {
@@ -81,4 +114,5 @@ public class CompanyDTO {
 	public void setEmployees(List<Long> employees) {
 		this.employees = employees;
 	}
+
 }

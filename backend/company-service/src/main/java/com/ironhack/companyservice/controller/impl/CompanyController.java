@@ -19,19 +19,19 @@ public class CompanyController implements ICompanyController {
 
 	@GetMapping("/companies")
 	@ResponseStatus(HttpStatus.OK)
-	public List<Company> getAllCompanies() {
+	public List<CompanyDTO> getAllCompanies() {
 		return companyService.getAllCompanies();
 	}
 
 	@GetMapping("/companies-by-player/{playerId}")
 	@ResponseStatus(HttpStatus.OK)
-	public List<Company> getCompaniesByPlayerId(@PathVariable Long playerId) {
+	public List<CompanyDTO> getCompaniesByPlayerId(@PathVariable Long playerId) {
 		return companyService.getCompaniesByPlayerId(playerId);
 	}
 
 	@GetMapping("/company/{id}")
 	@ResponseStatus(HttpStatus.OK)
-	public Company getCompanyById(@PathVariable Long id) {
+	public CompanyDTO getCompanyById(@PathVariable Long id) {
 		return companyService.getCompanyById(id);
 	}
 
